@@ -1,0 +1,41 @@
+#mc_embed_signup_scroll {
+  h2 {
+    display: none;
+  }
+}
+#mc_embed_signup {
+  form {
+    padding: 0 !important;
+  }
+  .button {
+    height: 50px !important;
+  }
+}
+.brandingLogo {
+  display: none;
+}
+
+.optionalParent {
+  .button {
+    color: $grey-dark !important;
+    font-weight: bold;
+  }
+}
+
+#mc-embedded-subscribe.button {
+  background-color: $green !important;
+  font-weight: bold !important;
+  padding: 0.5rem 2rem !important;
+  border-radius: 0 !important;
+}
+
+.mc-field-group {
+  label {
+    font-family: "sofia-pro";
+    font-size: $font-size-sm;
+    margin-bottom: 0.25rem !important;
+  }
+  input {
+    border-radius: 0 !important;
+  }
+}

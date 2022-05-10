@@ -1,0 +1,18 @@
+.navigation{
+    position: absolute;
+    margin-top: 1rem;
+    @include media-breakpoint-up(lg) {
+        margin-top: 3rem;
+    }
+    .logo{
+        img {
+        width: 7rem;
+            @include media-breakpoint-up(lg) {
+                width: 265px;
+            }
+        }
+    }
+    &--inline{
+        position: relative;
+    }
+}

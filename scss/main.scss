@@ -1,0 +1,15 @@
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+
+@import "variables";
+@import "banner";
+@import "table";
+@import "nav";
+
+
+h4{
+    font-size: 1rem;
+}
+
+a{
+    color: turquoise;
+}

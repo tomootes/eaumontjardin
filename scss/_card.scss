@@ -1,0 +1,36 @@
+.card {
+  font-family: "sofia-pro";
+  font-size: $font-size-p;
+  font-weight: 300;
+  margin-bottom: 1rem;
+  .card-header {
+    .btn-link {
+      font-size: $font-size-p !important;
+      display: flex;
+      text-align: left;
+      text-decoration: none;
+      color: black;
+      .icon {
+        position: absolute;
+        line-height: 1;
+        top: 5px;
+        right: 20px;
+        font-size: 39px;
+        &--minus {
+          display: none;
+        }
+      }
+      &[aria-expanded="true"] {
+        .icon--plus {
+          display: none;
+        }
+        .icon--minus {
+          display: block;
+        }
+      }
+    }
+  }
+  .card-body {
+    padding: 1.5rem;
+  }
+}

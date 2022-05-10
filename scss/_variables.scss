@@ -1,0 +1,38 @@
+$grey-dark: #292627;
+$green: #00ffca;
+$pink: #ff0068;
+$grey-light: rgba(41, 38, 39, 0.1);
+
+$font-size-sm: 1rem;
+$font-size-p: 21px;
+$font-size-p-sm: 17px;
+$font-size-md: 1.5rem;
+$font-size-lg: 2rem;
+$font-size-xl: 3.5rem;
+
+.bg-pink {
+  background-color: $pink;
+  display: flex;
+}
+
+.bg-pink-light {
+  background-color: lighten($pink, 10%);
+}
+
+.bg-grey-light {
+  display: flex;
+  flex-direction: column;
+  background-color: $grey-light;
+}
+
+.bg-grey-dark {
+  display: flex;
+  flex-direction: column;
+  background-color: $grey-dark;
+  color: white;
+}
+
+.bg-green {
+  background-color: $green;
+  color: $grey-dark;
+}
