@@ -1,7 +1,11 @@
-$grey-dark: #292627;
-$green: #00ffca;
-$pink: #ff0068;
-$grey-light: rgba(41, 38, 39, 0.1);
+$red: #8f1e22;
+$green:#9ec1bd;
+
+$green-darker: darken($green, 20%);
+$green-light: lighten($green, 5%);
+
+$grey-light: #cccccc;
+$grey-dark: #888888;
 
 $font-size-sm: 1rem;
 $font-size-p: 21px;

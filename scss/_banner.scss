@@ -1,6 +1,8 @@
 .banner{
     position: relative;
     margin-top: 10rem;
+    display: flex;
+    flex-direction: column;
     h1{
         font-size: 3rem;
     }
