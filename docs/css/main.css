@@ -11183,7 +11183,7 @@ textarea.form-control-lg {
 @media (min-width: 768px) {
   .nav {
     left: auto;
-    padding: 0;
+    padding: 0.25rem;
     top: 2.5rem;
     flex-direction: row;
     justify-content: flex-end;
@@ -11191,7 +11191,7 @@ textarea.form-control-lg {
   }
 }
 .nav a {
-  height: 56px;
+  height: 42px;
   border: 2px solid white;
   padding: 0.5rem;
   text-decoration: none;
@@ -11203,6 +11203,7 @@ textarea.form-control-lg {
   .nav a {
     border: 0;
     padding: 0;
+    height: 56px;
   }
 }
 .nav li {
@@ -11221,6 +11222,7 @@ textarea.form-control-lg {
   padding: 1rem;
   margin-left: 2rem;
   font-size: 1rem;
+  font-weight: bolder;
 }
 .nav .bg-button a {
   font-size: 1rem;
