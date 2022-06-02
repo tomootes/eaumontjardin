@@ -11236,6 +11236,58 @@ textarea.form-control-lg {
   display: none;
 }
 
+.sidebar-right {
+  position: fixed;
+  right: 0;
+  top: 190px;
+}
+.sidebar-right b {
+  display: none;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+@media (min-width: 992px) {
+  .sidebar-right {
+    top: calc(50% - 125px);
+  }
+  .sidebar-right b {
+    display: block;
+  }
+  .sidebar-right__item {
+    padding: 1rem;
+  }
+}
+.sidebar-right__items {
+  background-color: yellow;
+  padding: 0.75rem;
+}
+@media (min-width: 992px) {
+  .sidebar-right__items {
+    padding: 1rem;
+  }
+}
+.sidebar-right__item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: 900;
+  font-size: 0.7rem;
+}
+.sidebar-right__item:first-child {
+  margin-bottom: 0.75rem;
+}
+@media (min-width: 992px) {
+  .sidebar-right__item {
+    padding: 1rem;
+    font-weight: 900;
+    font-size: 0.8rem;
+  }
+}
+.sidebar-right__item__icon {
+  height: 40px;
+}
+
 p {
   font-size: 1.25rem;
   line-height: 1.5;
