@@ -2,41 +2,84 @@
 
 .nav{
     display: flex;
-    background-color: $red;
-    box-shadow: 6px 7px 20px $red;
-    padding: 1rem;
+    flex-direction: column;
+    align-items: flex-end;
     max-width: 100%;
     margin-bottom: 5rem;
-    justify-content: center;
     z-index: 10000;
     position: fixed;
     top: 1rem;
     left: 0;
-    padding: .5rem;
 
     @include media-breakpoint-up(md) {
         left: auto;
-        padding: 0.25rem;
         top: 2.5rem;
         flex-direction: row;
-        justify-content: flex-end;
         margin-bottom: 5rem;
     }
 
-    a {
-        height: 42px;
-        border: 2px solid white;
+    &--bar{
         padding: .5rem;
-        text-decoration: none;
+        display: flex;
+        justify-content: center;
+        box-shadow: 6px 7px 20px $red;
+        background-color: $red;
+        margin: 0;
+        justify-content: center;
+        flex-wrap: wrap;
+
+        @include media-breakpoint-up(md) {
+            flex-direction: row;
+            justify-content: flex-end;
+            padding: 0.25rem;
+        }
+
+        ul {
+            list-style: none;
+            li {
+                list-style: none;
+            }
+        }
+
+        a {
+            text-transform: lowercase;
+            height: 42px;
+            border: 2px solid white;
+            padding: .5rem;
+            text-decoration: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            list-style: none;
+            @include media-breakpoint-up(md) {
+                border: 0;
+                padding: 0;
+                height: 56px;
+            }
+        }
+    
+
+    }
+
+    &--lang-switch{
+        height: 64px;
+        width: 64px;
+        background-color: #6a9ce3;
+        border-radius: 10px;
+        margin-left: .5rem;
+        margin-top: .5rem;
+        margin-right: .5rem;
         display: flex;
         justify-content: center;
         align-items: center;
-        @include media-breakpoint-up(md) {
-            border: 0;
-            padding: 0;
-            height: 56px;
+        box-shadow: 0px 0px 20px 3px white;
+        img {
+            height: 60px;
+            margin-top: .75rem;
         }
     }
+
+
 
 
     li{        
@@ -44,8 +87,7 @@
         text-decoration: none;
         font-size: 1rem;
         @include media-breakpoint-up(md) {
-
-            margin-left: 3rem;
+            margin-left: 2rem;
         }
     }
     

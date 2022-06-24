@@ -11168,29 +11168,48 @@ textarea.form-control-lg {
 
 .nav {
   display: flex;
-  background-color: #8f1e22;
-  box-shadow: 6px 7px 20px #8f1e22;
-  padding: 1rem;
+  flex-direction: column;
+  align-items: flex-end;
   max-width: 100%;
   margin-bottom: 5rem;
-  justify-content: center;
   z-index: 10000;
   position: fixed;
   top: 1rem;
   left: 0;
-  padding: 0.5rem;
 }
 @media (min-width: 768px) {
   .nav {
     left: auto;
-    padding: 0.25rem;
     top: 2.5rem;
     flex-direction: row;
-    justify-content: flex-end;
     margin-bottom: 5rem;
   }
 }
-.nav a {
+.nav--bar {
+  padding: 0.5rem;
+  display: flex;
+  justify-content: center;
+  box-shadow: 6px 7px 20px #8f1e22;
+  background-color: #8f1e22;
+  margin: 0;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+@media (min-width: 768px) {
+  .nav--bar {
+    flex-direction: row;
+    justify-content: flex-end;
+    padding: 0.25rem;
+  }
+}
+.nav--bar ul {
+  list-style: none;
+}
+.nav--bar ul li {
+  list-style: none;
+}
+.nav--bar a {
+  text-transform: lowercase;
   height: 42px;
   border: 2px solid white;
   padding: 0.5rem;
@@ -11198,13 +11217,31 @@ textarea.form-control-lg {
   display: flex;
   justify-content: center;
   align-items: center;
+  list-style: none;
 }
 @media (min-width: 768px) {
-  .nav a {
+  .nav--bar a {
     border: 0;
     padding: 0;
     height: 56px;
   }
+}
+.nav--lang-switch {
+  height: 64px;
+  width: 64px;
+  background-color: #6a9ce3;
+  border-radius: 10px;
+  margin-left: 0.5rem;
+  margin-top: 0.5rem;
+  margin-right: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 0px 20px 3px white;
+}
+.nav--lang-switch img {
+  height: 60px;
+  margin-top: 0.75rem;
 }
 .nav li {
   color: white;
@@ -11213,7 +11250,7 @@ textarea.form-control-lg {
 }
 @media (min-width: 768px) {
   .nav li {
-    margin-left: 3rem;
+    margin-left: 2rem;
   }
 }
 .nav .bg-button {
@@ -11239,7 +11276,7 @@ textarea.form-control-lg {
 .sidebar-right {
   position: fixed;
   right: 0;
-  top: 190px;
+  bottom: 0;
 }
 .sidebar-right b {
   display: none;
@@ -11285,7 +11322,7 @@ textarea.form-control-lg {
   }
 }
 .sidebar-right__item__icon {
-  height: 40px;
+  height: 32px;
 }
 
 p {
