@@ -11199,7 +11199,7 @@ textarea.form-control-lg {
   .nav--bar {
     flex-direction: row;
     justify-content: flex-end;
-    padding: 0.25rem;
+    padding: 0.25rem 0.25rem 0.25rem 1rem;
   }
 }
 .nav--bar ul {
@@ -11218,6 +11218,9 @@ textarea.form-control-lg {
   justify-content: center;
   align-items: center;
   list-style: none;
+}
+.nav--bar a.belangrijk {
+  border: 5px dashed white;
 }
 @media (min-width: 768px) {
   .nav--bar a {
@@ -11243,15 +11246,13 @@ textarea.form-control-lg {
   height: 60px;
   margin-top: 0.75rem;
 }
-.nav li {
+.nav a {
+  padding: 1rem 1rem;
+}
+.nav a li {
   color: white;
   text-decoration: none;
   font-size: 1rem;
-}
-@media (min-width: 768px) {
-  .nav li {
-    margin-left: 2rem;
-  }
 }
 .nav .bg-button {
   background-color: #aecbc8;
@@ -11271,6 +11272,21 @@ textarea.form-control-lg {
 }
 .nav .bg-button li::marker {
   display: none;
+}
+
+.plane {
+  margin-bottom: 4rem;
+  padding: 1.5rem;
+  background-color: #aecbc8;
+}
+.plane h2, .plane .h2 {
+  margin-bottom: 1.5rem;
+}
+.plane a {
+  color: #446965;
+}
+.plane ul li {
+  margin-bottom: 0.75rem;
 }
 
 .sidebar-right {
