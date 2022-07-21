@@ -31,7 +31,7 @@
         @include media-breakpoint-up(md) {
             flex-direction: row;
             justify-content: flex-end;
-            padding: 0.25rem;
+            padding: 0.25rem .25rem .25rem 1rem;
         }
 
         ul {
@@ -51,6 +51,9 @@
             justify-content: center;
             align-items: center;
             list-style: none;
+            &.belangrijk{
+                border: 5px dashed white;
+            }
             @include media-breakpoint-up(md) {
                 border: 0;
                 padding: 0;
@@ -80,16 +83,20 @@
     }
 
 
+    a {
+    padding: 1rem 1rem;
 
-
-    li{        
-        color: white;
-        text-decoration: none;
-        font-size: 1rem;
-        @include media-breakpoint-up(md) {
-            margin-left: 2rem;
+        li{        
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            @include media-breakpoint-up(md) {
+                // margin-left: 2rem;
+                // padding: 2rem 1rem;
+            }
         }
     }
+
     
     .bg-button{
         background-color: $green-light;
