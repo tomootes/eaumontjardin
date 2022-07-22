@@ -11199,7 +11199,7 @@ textarea.form-control-lg {
   .nav--bar {
     flex-direction: row;
     justify-content: flex-end;
-    padding: 0.25rem 0.25rem 0.25rem 1rem;
+    padding: 0.25rem 1rem 0.25rem 1rem;
   }
 }
 .nav--bar ul {
