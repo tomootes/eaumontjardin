@@ -11274,6 +11274,29 @@ textarea.form-control-lg {
   display: none;
 }
 
+.hero {
+  position: relative;
+}
+.hero__overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(64, 146, 122, 0.2392156863);
+}
+.hero__overlay img {
+  height: 200px;
+}
+@media (min-width: 768px) {
+  .hero__overlay img {
+    height: 700px;
+  }
+}
+
 .plane {
   margin-bottom: 4rem;
   padding: 1.5rem;
@@ -11311,7 +11334,7 @@ textarea.form-control-lg {
   }
 }
 .sidebar-right__items {
-  background-color: yellow;
+  background-color: #fff27e;
   padding: 0.75rem;
 }
 @media (min-width: 992px) {
