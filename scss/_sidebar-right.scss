@@ -20,7 +20,7 @@
     }
 
     &__items{
-        background-color: yellow;
+        background-color: $yellow;
         padding: .75rem;
         @include media-breakpoint-up(lg) {
             padding: 1rem;
