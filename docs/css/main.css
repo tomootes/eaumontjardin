@@ -11278,7 +11278,6 @@ textarea.form-control-lg {
   position: relative;
 }
 .hero__overlay {
-  position: absolute;
   left: 0;
   top: 0;
   width: 100%;
@@ -11287,18 +11286,33 @@ textarea.form-control-lg {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: rgba(64, 146, 121, 0.3960784314);
+  background-color: #00383d;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+@media (min-width: 768px) {
+  .hero__overlay {
+    background: rgba(0, 56, 61, 0.4117647059);
+    position: absolute;
+  }
+}
+.hero__overlay__logo {
+  margin-bottom: 0.5rem;
 }
 .hero__overlay__text {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0.5rem;
   color: white;
   font-weight: normal;
 }
+@media (min-width: 768px) {
+  .hero__overlay__text {
+    font-size: 2rem;
+  }
+}
 .hero__overlay img {
-  height: 200px;
+  height: 100px;
 }
 @media (min-width: 768px) {
   .hero__overlay img {
