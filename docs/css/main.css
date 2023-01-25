@@ -11303,8 +11303,10 @@ textarea.form-control-lg {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   color: white;
   font-weight: normal;
+  font-size: 1.5rem;
 }
 @media (min-width: 768px) {
   .hero__overlay__text {
@@ -11312,7 +11314,7 @@ textarea.form-control-lg {
   }
 }
 .hero__overlay img {
-  height: 100px;
+  height: 150px;
 }
 @media (min-width: 768px) {
   .hero__overlay img {
@@ -11343,6 +11345,7 @@ textarea.form-control-lg {
   position: fixed;
   right: 0;
   bottom: 0;
+  z-index: 99;
 }
 .sidebar-right b {
   display: none;
