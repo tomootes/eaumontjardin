@@ -11186,11 +11186,10 @@ textarea.form-control-lg {
   }
 }
 .nav--bar {
-  padding: 0.5rem;
+  padding: 0.25rem;
   display: flex;
   justify-content: center;
-  box-shadow: 6px 7px 20px #8f1e22;
-  background-color: #8f1e22;
+  background-color: none;
   margin: 0;
   justify-content: center;
   flex-wrap: wrap;
@@ -11199,6 +11198,8 @@ textarea.form-control-lg {
   .nav--bar {
     flex-direction: row;
     justify-content: flex-end;
+    background-color: #8f1e22;
+    box-shadow: 6px 7px 20px #8f1e22;
     padding: 0.25rem 1rem 0.25rem 1rem;
   }
 }
@@ -11218,9 +11219,19 @@ textarea.form-control-lg {
   justify-content: center;
   align-items: center;
   list-style: none;
+  background-color: #8f1e22;
 }
 .nav--bar a.belangrijk {
   border: 5px dashed white;
+}
+.nav--bar a li {
+  font-size: 0.75rem !important;
+  box-shadow: 6px 7px 20px #8f1e22;
+}
+@media (min-width: 768px) {
+  .nav--bar a li {
+    font-size: 1rem !important;
+  }
 }
 @media (min-width: 768px) {
   .nav--bar a {

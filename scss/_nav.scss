@@ -19,11 +19,11 @@
     }
 
     &--bar{
-        padding: .5rem;
+        padding: .25rem;
         display: flex;
         justify-content: center;
-        box-shadow: 6px 7px 20px $red;
-        background-color: $red;
+   
+        background-color: none;
         margin: 0;
         justify-content: center;
         flex-wrap: wrap;
@@ -31,6 +31,8 @@
         @include media-breakpoint-up(md) {
             flex-direction: row;
             justify-content: flex-end;
+            background-color: $red;
+            box-shadow: 6px 7px 20px $red;
             padding: 0.25rem 1rem .25rem 1rem;
         }
 
@@ -51,10 +53,23 @@
             justify-content: center;
             align-items: center;
             list-style: none;
+            background-color: $red;
+
             &.belangrijk{
                 border: 5px dashed white;
             }
+
+            li {
+                font-size: .75rem !important;
+                box-shadow: 6px 7px 20px $red;
+
+                @include media-breakpoint-up(md) {
+                    font-size: 1rem !important;  
+                }
+            }
+
             @include media-breakpoint-up(md) {
+
                 border: 0;
                 padding: 0;
                 height: 56px;
