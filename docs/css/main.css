@@ -1,4 +1,44 @@
 @charset "UTF-8";
+.bg-grey-light {
+  display: flex;
+  flex-direction: column;
+  background-color: #cccccc;
+}
+
+.bg-grey-dark {
+  display: flex;
+  flex-direction: column;
+  background-color: #888888;
+  color: white;
+}
+
+.bg-green {
+  background-color: #9ec1bd;
+  color: #888888;
+}
+
+.sign-up-form {
+  border: 5px dashed #7e7100;
+}
+.sign-up-form label {
+  font-weight: bolder;
+  font-size: 1rem;
+}
+.sign-up-form input,
+.sign-up-form select {
+  padding: 0.75rem 0 !important;
+}
+.sign-up-form #mc-embedded-subscribe {
+  margin: 0;
+}
+.sign-up-form .btn {
+  font-weight: bolder;
+  background-color: #619892;
+}
+.sign-up-form .btn:hover {
+  background-color: #aecbc8;
+}
+
 /*!
  * Bootstrap v5.1.3 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors
@@ -11118,15 +11158,6 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
-.bg-pink {
-  background-color: #d63384;
-  display: flex;
-}
-
-.bg-pink-light {
-  background-color: #df5d9e;
-}
-
 .bg-grey-light {
   display: flex;
   flex-direction: column;
@@ -11221,12 +11252,15 @@ textarea.form-control-lg {
   list-style: none;
   background-color: #8f1e22;
 }
+.nav--bar a.active {
+  font-weight: bolder;
+  background-color: #d63d42;
+}
 .nav--bar a.belangrijk {
   border: 5px dashed white;
 }
 .nav--bar a li {
   font-size: 0.75rem !important;
-  box-shadow: 6px 7px 20px #8f1e22;
 }
 @media (min-width: 768px) {
   .nav--bar a li {
@@ -11314,7 +11348,6 @@ textarea.form-control-lg {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
   color: white;
   font-weight: normal;
   font-size: 1.5rem;
@@ -11341,6 +11374,17 @@ textarea.form-control-lg {
   margin-bottom: 4rem;
   padding: 1.5rem;
   background-color: #aecbc8;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.plane .container {
+  position: relative;
+}
+.plane__icon {
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 .plane h2, .plane .h2 {
   margin-bottom: 1.5rem;
@@ -11350,6 +11394,17 @@ textarea.form-control-lg {
 }
 .plane ul li {
   margin-bottom: 0.75rem;
+}
+.plane--yellow {
+  background-color: #fffce4;
+}
+.plane--yellow p {
+  color: #655a00;
+  width: 75%;
+}
+.plane--yellow h2, .plane--yellow .h2 {
+  margin-top: 0;
+  color: #655a00;
 }
 
 .sidebar-right {
@@ -11448,6 +11503,11 @@ ul {
   .logo {
     margin-top: 8rem;
   }
+}
+
+.content {
+  color: black;
+  text-decoration: none;
 }
 
 /*# sourceMappingURL=main.css.map */

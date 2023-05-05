@@ -1,5 +1,5 @@
 $red: #8f1e22;
-$green:#9ec1bd;
+$green: #9ec1bd;
 
 $green-darker: darken($green, 20%);
 $green-light: lighten($green, 5%);
@@ -15,15 +15,6 @@ $font-size-p-sm: 17px;
 $font-size-md: 1.5rem;
 $font-size-lg: 2rem;
 $font-size-xl: 3.5rem;
-
-.bg-pink {
-  background-color: $pink;
-  display: flex;
-}
-
-.bg-pink-light {
-  background-color: lighten($pink, 10%);
-}
 
 .bg-grey-light {
   display: flex;

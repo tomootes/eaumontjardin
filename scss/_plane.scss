@@ -1,16 +1,38 @@
-.plane{
-    margin-bottom: 4rem;
-    padding: 1.5rem;
-    background-color: #aecbc8;
-    h2{
-        margin-bottom: 1.5rem;
+.plane {
+  margin-bottom: 4rem;
+  padding: 1.5rem;
+  background-color: #aecbc8;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  .container {
+    position: relative;
+  }
+  &__icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  h2 {
+    margin-bottom: 1.5rem;
+  }
+  a {
+    color: darken(#aecbc8, 40%);
+  }
+  ul {
+    li {
+      margin-bottom: 0.75rem;
     }
-    a {
-         color: darken( #aecbc8, 40%);
+  }
+  &--yellow {
+    background-color: lighten($yellow, 20%);
+    p {
+      color: darken($yellow, 55%);
+      width: 75%;
     }
-    ul {
-        li {
-            margin-bottom: .75rem;
-        }
+    h2 {
+      margin-top: 0;
+      color: darken($yellow, 55%);
     }
+  }
 }

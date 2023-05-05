@@ -1,0 +1,27 @@
+@use "../theme";
+
+$yellow: yellow;
+
+.sign-up-form {
+  //   padding: 2rem 0;
+  border: 5px dashed darken(theme.$yellow, 50%);
+  label {
+    font-weight: bolder;
+    font-size: 1rem;
+  }
+  input,
+  select {
+    padding: 0.75rem 0 !important;
+  }
+  #mc-embedded-subscribe {
+    margin: 0;
+  }
+
+  .btn {
+    font-weight: bolder;
+    background-color: theme.$green-darker;
+    &:hover {
+      background-color: theme.$green-light;
+    }
+  }
+}
