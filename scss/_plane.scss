@@ -1,4 +1,5 @@
 .plane {
+  $self: &; // This is important.
   margin-bottom: 4rem;
   padding: 1.5rem;
   background-color: #aecbc8;
@@ -8,10 +9,17 @@
   .container {
     position: relative;
   }
+
   &__icon {
-    position: absolute;
-    top: 0;
-    right: 0;
+    margin-bottom: 2rem;
+    width: 100%;
+    @include media-breakpoint-up(md) {
+      position: absolute;
+      top: 0;
+      right: 0;
+      margin-bottom: 0;
+      width: auto;
+    }
   }
   h2 {
     margin-bottom: 1.5rem;
@@ -26,9 +34,12 @@
   }
   &--yellow {
     background-color: lighten($yellow, 20%);
-    p {
+    box-shadow: 1px 1px 20px 6px darken($yellow, 30%);
+    #{ $self }__sub-title {
       color: darken($yellow, 55%);
-      width: 75%;
+      @include media-breakpoint-up(md) {
+        width: 75%;
+      }
     }
     h2 {
       margin-top: 0;

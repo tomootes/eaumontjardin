@@ -39,6 +39,73 @@
   background-color: #aecbc8;
 }
 
+.bg-grey-light {
+  display: flex;
+  flex-direction: column;
+  background-color: #cccccc;
+}
+
+.bg-grey-dark {
+  display: flex;
+  flex-direction: column;
+  background-color: #888888;
+  color: white;
+}
+
+.bg-green {
+  background-color: #9ec1bd;
+  color: #888888;
+}
+
+#mc_embed_signup_scroll h2, #mc_embed_signup_scroll .h2 {
+  display: none;
+}
+
+#mc_embed_signup form {
+  padding: 0 !important;
+}
+#mc_embed_signup .button {
+  height: 50px !important;
+}
+#mc_embed_signup div#mce-responses {
+  padding: 0 !important;
+  margin: 0 !important;
+  width: 100% !important;
+}
+#mc_embed_signup div#mce-responses #mce-success-response {
+  margin: 0 0 2rem !important;
+  width: 100% !important;
+  background-color: #00834b;
+  color: white;
+  padding: 1.5rem;
+  font-size: 1.75rem;
+}
+
+.brandingLogo {
+  display: none;
+}
+
+.optionalParent .button {
+  color: #888888 !important;
+  font-weight: bold;
+}
+
+#mc-embedded-subscribe.button {
+  background-color: #9ec1bd !important;
+  font-weight: bold !important;
+  padding: 0.5rem 2rem !important;
+  border-radius: 0 !important;
+}
+
+.mc-field-group label {
+  font-family: "sofia-pro";
+  font-size: 1rem;
+  margin-bottom: 0.25rem !important;
+}
+.mc-field-group input {
+  border-radius: 0 !important;
+}
+
 /*!
  * Bootstrap v5.1.3 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors
@@ -11382,9 +11449,17 @@ textarea.form-control-lg {
   position: relative;
 }
 .plane__icon {
-  position: absolute;
-  top: 0;
-  right: 0;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .plane__icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-bottom: 0;
+    width: auto;
+  }
 }
 .plane h2, .plane .h2 {
   margin-bottom: 1.5rem;
@@ -11397,10 +11472,15 @@ textarea.form-control-lg {
 }
 .plane--yellow {
   background-color: #fffce4;
+  box-shadow: 1px 1px 20px 6px #e4cd00;
 }
-.plane--yellow p {
+.plane--yellow .plane__sub-title {
   color: #655a00;
-  width: 75%;
+}
+@media (min-width: 768px) {
+  .plane--yellow .plane__sub-title {
+    width: 75%;
+  }
 }
 .plane--yellow h2, .plane--yellow .h2 {
   margin-top: 0;

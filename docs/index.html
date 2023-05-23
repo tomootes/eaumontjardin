@@ -358,7 +358,8 @@
             Wil je mensen meenemen? Dit kan eventueel, en
             <b>alleen in overleg</b> en na goedkeuring van de organisatie. Neem
             hiervoor (liever eerder dan later) contact op via
-            eaumontjardin@gmail.com.
+            <a href="mailto:eaumontjardin@gmail.com">eaumontjardin@gmail.com</a
+            >.
           </li>
           <li>
             Er is geen pinautomaat in de omgeving, dus het is handig om cash bij
@@ -527,6 +528,15 @@
                 <label for="mce-MMERGE6">Via wie </label>
                 <select name="MMERGE6" class="" id="mce-MMERGE6">
                   <option value=""></option>
+                  <option value="Ik was er vorig jaar al!">
+                    Ik was er vorig jaar al!
+                  </option>
+                  <option value="Ik speel in een band">
+                    Ik speel in een band
+                  </option>
+                  <option value="Ik zit bij het koor van Lieke">
+                    Ik zit bij het koor van Lieke
+                  </option>
                   <option value="Annemoon">Annemoon</option>
                   <option value="Fee">Fee</option>
                   <option value="Tom">Tom</option>
@@ -572,7 +582,7 @@
                   </fieldset>
                 </div>
               </div>
-              <div id="mce-responses" class="clear foot">
+              <div id="mce-responses" class="clear">
                 <div
                   class="response"
                   id="mce-error-response"
@@ -582,7 +592,10 @@
                   class="response"
                   id="mce-success-response"
                   style="display: none"
-                ></div>
+                >
+                  Hoera! 💌 Je krijgt binnenkort digitale post om je
+                  inschrijving te <b>finaliseron</b>
+                </div>
               </div>
               <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
               <div style="position: absolute; left: -5000px" aria-hidden="true">
@@ -666,6 +679,30 @@
             });
           })(jQuery);
           var $mcj = jQuery.noConflict(true);
+        </script>
+        <script>
+          // select the target node
+          var target = document.getElementById("mce-success-response");
+
+          // create an observer instance
+          var observer = new MutationObserver(function (mutations) {
+            mutations.forEach(function (mutation) {
+              if (target.innerHTML === "Thank you for subscribing!") {
+                target.innerHTML =
+                  "Hoera! 💌 Je krijgt binnenkort digitale post om je inschrijving te finaliseron";
+              }
+            });
+          });
+
+          // configuration of the observer:
+          var config = {
+            attributes: true,
+            childList: true,
+            characterData: true,
+          };
+
+          // pass in the target node, as well as the observer options
+          observer.observe(target, config);
         </script>
         <!--End mc_embed_signup-->
       </div>
