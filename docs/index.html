@@ -69,8 +69,14 @@
           <a href="#overnachten"><li>Overnachten</li></a>
           <a href="#waar"><li>Waar</li></a>
           <a href="#belangrijk" class="belangrijk"><li>¡Belangrijk!</li></a>
-          <a href="#inschrijven"><li>inschrijven</li></a>
+          <a href="#inschrijven" class="primary"><li>inschrijven</li></a>
           <a href="#contact"><li>Contact</li></a>
+          <a
+            href="https://winkel.eaumontjardin.fr/wordpress/"
+            class="secondary"
+            target="_blank"
+            ><li>Webwinkel</li></a
+          >
         </ul>
         <!-- <a class="nav--lang-switch" href="./en">
           <img
@@ -403,10 +409,15 @@
           ><h2>Inschrijven</h2></a
         >
         <p class="plane__sub-title w-80">
-          Via dit formulier kan jij je aanmelden voor Eau Mont Jardin. 🧚‍♂️ Fee,
-          onze geweldige inschrijvingen-chef, zal daarna contact met je opnemen
-          over de vervolgstappen. Je aanmelding via dit formulier is namelijk
-          nog geen officiële inschrijving!
+          Via dit formulier kan je je aanmelden voor Eau Mont Jardin. Als alles
+          in orde is stuurt Fee (onze geweldige inschrijvingenchef 🧚‍♂️) je een
+          login van onze
+          <a href="https://winkel.eaumontjardin.fr/wordpress" target="_blank"
+            >webwinkel</a
+          >. Let op, de aanmelding via dit formulier is nog geen officiële
+          inschrijving! Bij vragen, mail naar:
+          <a href="mailto:eaumontjardin@gmail.com">eaumontjardin@gmail.com</a>
+          of bel met <a href="#contact">Tom of Annemoon</a>.
         </p>
         <img
           class="plane__icon"
@@ -593,8 +604,11 @@
                   id="mce-success-response"
                   style="display: none"
                 >
-                  Hoera! 💌 Je krijgt binnenkort digitale post om je
-                  inschrijving te <b>finaliseron</b>
+                  Hoera! 💌 Als alles in orde is krijg je binnenkort een email
+                  (een login tot de webshop) om je inschrijving te betalen en te
+                  finaliseron. Je kunt dan ook aangeven wat je persoonlijk zou
+                  willen bijdragen aan het festival. Dus denk hier alvast overna
+                  🔮
                 </div>
               </div>
               <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
@@ -688,8 +702,11 @@
           var observer = new MutationObserver(function (mutations) {
             mutations.forEach(function (mutation) {
               if (target.innerHTML === "Thank you for subscribing!") {
-                target.innerHTML =
-                  "Hoera! 💌 Je krijgt binnenkort digitale post om je inschrijving te finaliseron";
+                target.innerHTML = `Hoera! 💌 Als alles in orde is krijg je binnenkort een email
+                  (een login tot de webshop) om je inschrijving te betalen en te
+                  voltooien. Je kunt dan ook aangeven wat je persoonlijk zou
+                  willen bijdragen aan het festival. Dus denk hier alvast overna
+                  🔮`;
               }
             });
           });

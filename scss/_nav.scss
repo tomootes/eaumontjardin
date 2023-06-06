@@ -1,3 +1,5 @@
+@use "theme.scss";
+
 .nav {
   display: flex;
   flex-direction: column;
@@ -29,7 +31,7 @@
     @include media-breakpoint-up(md) {
       flex-direction: row;
       justify-content: flex-end;
-      background-color: $red;
+      background-color: theme.$red;
       box-shadow: 6px 7px 20px $red;
       padding: 0.25rem 1rem 0.25rem 1rem;
     }
@@ -58,8 +60,38 @@
         background-color: lighten($red, 20%);
       }
 
+      &.primary.active {
+        font-weight: bolder;
+        background-color: lighten($red, 20%);
+        border: 5px solid darken($red, 10%);
+        li {
+          color: white !important;
+        }
+      }
+
+      &.primary {
+        background-color: white;
+        border: 5px solid darken(white, 10%);
+        li {
+          text-transform: uppercase;
+          color: $red;
+          font-weight: bold;
+          text-decoration: wavy;
+        }
+      }
+
+      &.secondary {
+        background-color: lighten(theme.$green-darker, 20%);
+        border: 5px solid darken(theme.$green-darker, 10%);
+        li {
+          color: darken(theme.$green-darker, 40%);
+          font-weight: bold;
+          text-decoration: wavy;
+        }
+      }
+
       &.belangrijk {
-        border: 5px dashed white;
+        border: 5px dashed lighten($red, 20%);
       }
 
       li {

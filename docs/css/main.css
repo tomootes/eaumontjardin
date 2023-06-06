@@ -11264,6 +11264,24 @@ textarea.form-control-lg {
   background-color: rgba(205, 243, 221, 0.74);
 }
 
+.bg-grey-light {
+  display: flex;
+  flex-direction: column;
+  background-color: #cccccc;
+}
+
+.bg-grey-dark {
+  display: flex;
+  flex-direction: column;
+  background-color: #888888;
+  color: white;
+}
+
+.bg-green {
+  background-color: #9ec1bd;
+  color: #888888;
+}
+
 .nav {
   display: flex;
   flex-direction: column;
@@ -11323,8 +11341,35 @@ textarea.form-control-lg {
   font-weight: bolder;
   background-color: #d63d42;
 }
+.nav--bar a.primary.active {
+  font-weight: bolder;
+  background-color: #d63d42;
+  border: 5px solid #651518;
+}
+.nav--bar a.primary.active li {
+  color: white !important;
+}
+.nav--bar a.primary {
+  background-color: white;
+  border: 5px solid #e6e6e6;
+}
+.nav--bar a.primary li {
+  text-transform: uppercase;
+  color: #8f1e22;
+  font-weight: bold;
+  text-decoration: wavy;
+}
+.nav--bar a.secondary {
+  background-color: #9ec1bd;
+  border: 5px solid #4d7974;
+}
+.nav--bar a.secondary li {
+  color: #121b1a;
+  font-weight: bold;
+  text-decoration: wavy;
+}
 .nav--bar a.belangrijk {
-  border: 5px dashed white;
+  border: 5px dashed #d63d42;
 }
 .nav--bar a li {
   font-size: 0.75rem !important;
