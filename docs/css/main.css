@@ -97,13 +97,26 @@
   border-radius: 0 !important;
 }
 
+.mc-field-group {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+}
 .mc-field-group label {
   font-family: "sofia-pro";
+  font-weight: bold;
   font-size: 1rem;
   margin-bottom: 0.25rem !important;
 }
 .mc-field-group input {
   border-radius: 0 !important;
+  padding: 0.5rem;
+}
+.mc-field-group input[type=checkbox] {
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  margin-left: 0.5rem;
+  transform: scale(2);
 }
 
 .bg-grey-light {

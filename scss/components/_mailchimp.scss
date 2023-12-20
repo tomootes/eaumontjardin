@@ -47,12 +47,23 @@
 }
 
 .mc-field-group {
+  margin-top: .5rem;
+  display: flex;
+  flex-direction: column;
   label {
     font-family: "sofia-pro";
+    font-weight: bold;
     font-size: theme.$font-size-sm;
     margin-bottom: 0.25rem !important;
   }
   input {
     border-radius: 0 !important;
+    padding: .5rem;
+  }
+  input[type="checkbox"]{
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    margin-left: .5rem;
+    transform: scale(2);
   }
 }
