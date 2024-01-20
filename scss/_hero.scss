@@ -1,6 +1,6 @@
-.hero{
+.hero {
     position: relative;
-    &__overlay{
+    &__overlay {
         left: 0;
         top: 0;
         width: 100%;
@@ -9,17 +9,17 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        background-color: #00383d;
+        background-color: rgba(0, 56, 61, 0.7117647059);
         padding: 1rem;
         margin-bottom: 1rem;
         @include media-breakpoint-up(md) {
-            background: #00383d69;
+            // background: #00383d69;
             position: absolute;
         }
-        &__logo{
-            margin-bottom: .5rem;
+        &__logo {
+            margin-bottom: 0.5rem;
         }
-        &__text{
+        &__text {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -33,7 +33,7 @@
         img {
             height: 150px;
             @include media-breakpoint-up(md) {
-                height: 300px;  
+                height: 300px;
             }
         }
     }

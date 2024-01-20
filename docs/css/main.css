@@ -11493,13 +11493,12 @@ textarea.form-control-lg {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: #00383d;
+  background-color: rgba(0, 56, 61, 0.7117647059);
   padding: 1rem;
   margin-bottom: 1rem;
 }
 @media (min-width: 768px) {
   .hero__overlay {
-    background: rgba(0, 56, 61, 0.4117647059);
     position: absolute;
   }
 }
