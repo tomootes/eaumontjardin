@@ -1,0 +1,36 @@
+h1 {
+  line-height: 1.45;
+}
+
+body {
+  font-family: "sofia-pro";
+}
+
+.heading {
+  font-weight: 600;
+  font-size: $font-size-lg;
+
+  &--spacious {
+    margin-bottom: 2rem;
+  }
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 600;
+}
+
+.text--spacious {
+  margin-bottom: 1rem;
+
+  @include media-breakpoint-up(lg) {
+    margin-bottom: 3.5rem;
+  }
+}
+
+p {
+  font-weight: 300;
+  font-size: $font-size-p;
+}

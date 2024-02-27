@@ -1,0 +1,13 @@
+.socials {
+  display: flex;
+  justify-content: center;
+  a {
+    margin-left: 1.25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+}

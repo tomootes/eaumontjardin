@@ -1,0 +1,58 @@
+@forward "components";
+
+@import "theme";
+@import "fonts";
+// @import "banner";
+// @import "table";
+@import "nav";
+// @import "hero";
+@import "footer";
+// @import "plane";
+// @import "sidebar-right";
+
+.font-weight-bold {
+  font-weight: bolder;
+}
+
+body {
+  background-color: #91a37cff;
+}
+
+p {
+  font-size: 1.25rem;
+  line-height: 1.5;
+  margin-bottom: 0.75rem !important;
+}
+
+h4 {
+  font-size: 1rem;
+}
+
+a {
+  color: $green-darker;
+  text-decoration: underline !important;
+}
+
+.container-sm {
+  max-width: 840px;
+}
+
+ul {
+  font-size: 1.25rem;
+  li {
+    margin-bottom: 0.25rem;
+  }
+}
+
+.fat-bottom {
+  margin-bottom: 5rem;
+}
+
+.container-sm {
+  margin-bottom: 4rem;
+}
+
+.content {
+  color: black;
+  text-decoration: none;
+}

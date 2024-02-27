@@ -1,0 +1,28 @@
+.footer {
+    height: 10rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: $green-darker;
+    color: white;
+    top: 0;
+    font-weight: bold;
+    position: relative;
+    margin: 15rem 0 0 0;
+    .container {
+        // display: flex;
+        justify-content: flex-end;
+        a {
+            margin-left: 1rem;
+        }
+    }
+
+    &__top-image {
+        width: 100%;
+        position: absolute;
+        top: -8rem;
+        left: 0;
+        height: 8rem;
+        background-image: url("/assets/images/4.svg");
+    }
+}
