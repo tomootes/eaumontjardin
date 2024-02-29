@@ -8,6 +8,7 @@
   position: fixed;
   top: 0;
   font-weight: bold;
+  z-index: 999;
   &__logo {
     position: absolute;
     top: 2rem;
@@ -27,10 +28,12 @@
     transform: rotate(9deg);
     margin-left: 0;
     background-image: url("/assets/images/star.svg");
+    background-repeat: no-repeat;
     transition: all 300ms;
     &:hover {
       transform: rotate(-9deg);
       background: linear-gradient(in hsl longer hue 45deg, red 0 0);
+      width: 440px;
       h2 {
         font-size: 3em;
       }

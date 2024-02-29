@@ -1,0 +1,13 @@
+$carousel-gap: 0.5rem;
+
+.carousel {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    background: white;
+    grid-gap: $carousel-gap;
+    padding: $carousel-gap;
+
+    &--two {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}

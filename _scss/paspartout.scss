@@ -1,0 +1,114 @@
+.paspartout {
+    padding: 0.5rem;
+    background-color: white;
+    position: relative;
+
+    .gif-1 {
+        position: absolute;
+        top: 2rem;
+        right: 4rem;
+    }
+
+    .gif-2 {
+        position: absolute;
+        top: 3rem;
+        left: 3rem;
+    }
+
+    .gif-3 {
+        position: absolute;
+        top: 6rem;
+        right: 3rem;
+    }
+
+    .gif-4 {
+        width: 100px;
+        position: absolute;
+        bottom: 12rem;
+        left: 2rem;
+    }
+
+    .gif-5 {
+        width: 60px;
+        position: absolute;
+        bottom: 12rem;
+        right: 2rem;
+    }
+
+    .gif-5 {
+        width: 60px;
+        position: absolute;
+        bottom: 12rem;
+        right: 2rem;
+    }
+
+    .gif-6 {
+        // width: 60px;
+        position: absolute;
+        top: 25rem;
+        right: 10rem;
+    }
+
+    .gif-7 {
+        width: 60px;
+        position: absolute;
+        bottom: 26rem;
+        right: 2rem;
+    }
+
+    .gif-8 {
+        width: 160px;
+        position: absolute;
+        bottom: 33rem;
+        left: 2rem;
+    }
+
+    .gif-9 {
+        width: 150px;
+        position: absolute;
+        bottom: -2rem;
+        left: -2rem;
+        z-index: 99;
+    }
+
+    .gif-10 {
+        // width: 60px;
+        position: absolute;
+        bottom: 12rem;
+        right: 15rem;
+    }
+
+    .gif-11 {
+        // width: 60px;
+        position: absolute;
+        bottom: 12rem;
+        right: 2rem;
+    }
+
+    &--moon {
+        // background-color: red;
+        padding: 0;
+        border-image-source: url("https://raw.githubusercontent.com/robole/artifice/main/framed-content/img/frame.png");
+        border-image-slice: 93 92 87 92;
+        border-image-repeat: stretch;
+        background-color: wheat;
+        border-style: inset;
+        border-width: 60px;
+        z-index: 1;
+
+        // border: 2rem solid black;
+    }
+    .moon-overlay {
+        padding: 1rem;
+        color: #000;
+        font-size: 2rem;
+        background-color: pink;
+        width: 100%;
+        position: absolute;
+        text-align: center;
+        bottom: 2rem;
+        left: 0;
+        border-left: 5px solid rgb(255, 95, 121);
+        border-right: 5px solid rgb(255, 95, 121);
+    }
+}
