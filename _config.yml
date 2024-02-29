@@ -27,7 +27,7 @@ description: >- # this means to ignore newlines until "baseurl:"
 
 url: https://eaumontjardin.fr
 # baseurl: "/eaumontjardin"
-domain: tomootes.github.io
+domain: eaumontjardin.fr
 
 sass:
   sass_dir: _scss

@@ -19,6 +19,25 @@ body {
   background-color: #91a37cff;
 }
 
+.btn-whatsapp {
+  background-color: #25d366;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  font-weight: bolder;
+  text-decoration: none !important;
+  color: white;
+  width: 18rem;
+}
+
+#mc-embedded-subscribe {
+  background-color: $yellow;
+  cursor: pointer;
+  border: 2px solid white;
+}
+
 p {
   font-size: 1.25rem;
   line-height: 1.5;
