@@ -1,4 +1,4 @@
-.action-block{
+.action-block {
     display: flex;
     flex-direction: column-reverse;
     color: white;
@@ -7,16 +7,17 @@
         flex-direction: row;
     }
 
-    &__first,&__second{
+    &__first,
+    &__second {
         display: flex;
         flex-direction: column;
         background-color: $pink;
-        @include media-breakpoint-up(md) {
+        @media only screen and (max-width: 768px) {
             width: 50%;
         }
     }
 
-    &__first{   
+    &__first {
         padding: 2rem 1.5rem;
         display: flex;
         flex-direction: column;
@@ -26,14 +27,14 @@
             padding: 6rem 3.5rem;
         }
 
-        &__tag{
+        &__tag {
             font-weight: 500;
             margin-bottom: 1rem;
             @include media-breakpoint-up(md) {
                 margin-bottom: 2rem;
             }
         }
-        &__title{
+        &__title {
             line-height: 1;
             font-size: 2.5rem;
             @include media-breakpoint-up(md) {
@@ -46,15 +47,13 @@
             @media (min-width: 1300px) {
                 font-size: 4.5rem;
             }
-
         }
-        &__link{
+        &__link {
             margin-top: 2rem;
             align-self: flex-end;
         }
     }
 
-    .second{
-
+    .second {
     }
 }

@@ -9,13 +9,6 @@
     font-weight: bold;
     position: relative;
     margin: 15rem 0 0 0;
-    .container {
-        // display: flex;
-        justify-content: flex-end;
-        a {
-            margin-left: 1rem;
-        }
-    }
 
     &__top-image {
         width: 100%;
@@ -24,5 +17,16 @@
         left: 0;
         height: 8rem;
         background-image: url("/assets/images/4.svg");
+    }
+
+    &__links {
+        display: flex;
+        flex-direction: column;
+        // background-color: plum;
+
+        @media only screen and (min-width: 768px) {
+            flex-direction: row;
+            justify-content: space-between;
+        }
     }
 }
