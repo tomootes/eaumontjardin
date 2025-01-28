@@ -6,8 +6,16 @@ $carousel-gap: 0.5rem;
     background: white;
     grid-gap: $carousel-gap;
     padding: $carousel-gap;
+    margin-top: 4rem;
 
     &--two {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    &__img {
+        // background-color: red;
+        p {
+            margin-bottom: 0;
+        }
     }
 }

@@ -6,7 +6,7 @@
 @import "carousel";
 @import "paspartout";
 @import "nav";
-// @import "hero";
+@import "hero";
 @import "footer";
 // @import "plane";
 // @import "sidebar-right";
@@ -41,7 +41,6 @@ body {
 p {
   font-size: 1.25rem;
   line-height: 1.5;
-  margin-bottom: 0.75rem !important;
 }
 
 h4 {
