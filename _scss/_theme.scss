@@ -1,10 +1,8 @@
 $red: #8f1e22;
 $green: #9ec1bd;
 
-$greenInfo: #50ffb4;
-
 $green-darker: #688456ff;
-$green-light: #91a37cff;
+$green-light: rgb(166, 181, 148);
 $yellow: #edbb31ff;
 
 $blue: #1e3547ff;
@@ -20,21 +18,3 @@ $font-size-lg: 2rem;
 $font-size-xl: 3.5rem;
 
 $md: 768px;
-
-.bg-grey-light {
-  display: flex;
-  flex-direction: column;
-  background-color: $grey-light;
-}
-
-.bg-grey-dark {
-  display: flex;
-  flex-direction: column;
-  background-color: $grey-dark;
-  color: white;
-}
-
-.bg-green {
-  background-color: $green;
-  color: $grey-dark;
-}

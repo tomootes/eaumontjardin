@@ -2,45 +2,46 @@
 
 @import "theme";
 @import "fonts";
-// @import "banner";
+@import "quote";
 @import "carousel";
 @import "paspartout";
 @import "nav";
-@import "hero";
 @import "footer";
-// @import "plane";
-// @import "sidebar-right";
+@import "nieuwsbrief-form";
 
 .font-weight-bold {
   font-weight: bolder;
 }
 
 body {
-  background-color: #91a37cff;
+  background-color: $green-light;
 }
 
-.btn-whatsapp {
-  background-color: #25d366;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  display: flex;
-  text-align: center;
-  justify-content: center;
-  font-weight: bolder;
-  text-decoration: none !important;
-  color: white;
-  width: 18rem;
+.intro{
+  .drop-cap{
+    float: left;
+    height: 130px;
+    margin-right: 6px;
+    background-color: #bcc4b4;
+  }
 }
+
 
 #mc-embedded-subscribe {
   background-color: $yellow;
   cursor: pointer;
-  border: 2px solid white;
 }
 
 p {
-  font-size: 1.25rem;
-  line-height: 1.5;
+  font-size: $font-size-sm;
+  // line-height: 1.5;
+  margin-bottom: 1rem !important;
+}
+
+ul {
+  li {
+    font-size: $font-size-sm;
+  }
 }
 
 h4 {

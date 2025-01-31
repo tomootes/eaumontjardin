@@ -1,0 +1,23 @@
+@use "theme";
+
+
+.mc-field-group {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  label {
+    font-weight: bold;
+    font-size: $font-size-sm;
+    margin-bottom: 0.25rem !important;
+  }
+  input {
+    border-radius: 0 !important;
+    padding: .5rem;
+  }
+  input[type="checkbox"] {
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    margin-left: 0.5rem;
+    transform: scale(2);
+  }
+}
