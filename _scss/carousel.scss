@@ -1,14 +1,19 @@
 $carousel-gap: 0.5rem;
 
-@import "theme";
+@forward "theme";
 
 .carousel {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    background: white;
-    grid-gap: $carousel-gap;
+    display: flex;
+    flex-direction: column;
     padding: $carousel-gap;
-    margin-top: 4rem;
+    background: white;
+
+    @media (min-width: $sm) {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-gap: $carousel-gap;
+        margin-top: 4rem;
+    }
 
     &--single {
         display: flex;
@@ -22,6 +27,10 @@ $carousel-gap: 0.5rem;
         display: flex;
         flex-direction: column;
         overflow: hidden;
+        margin-bottom: .5rem;
+        @media (min-width: $sm) {
+            margin-bottom: 0;
+        }
         p {
             margin-bottom: 0;
         }
