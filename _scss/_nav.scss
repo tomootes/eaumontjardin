@@ -31,6 +31,8 @@
   .container {
   }
 
+  // opmaak van bus tickets rechtsboven
+
   &__tickets {
     display: flex;
     align-items: center;
@@ -101,6 +103,8 @@
     }
   }
 }
+
+//  gele knop in nav bak voor nieuwsbrief
 
 .nieuwsbrief-nav-item{
   background-color: #edbb31ff;
