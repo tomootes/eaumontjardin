@@ -5,7 +5,7 @@
 
 open power shell en zie image 
 
-cd vs.code
+cd vs.codeprojects
 cd eaumont
 
 ## Serve stuff
