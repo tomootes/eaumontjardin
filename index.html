@@ -18,6 +18,7 @@
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0;" />
   </head>
+  
   <body>
     {% include nav.html %}
     <div class="container mx-auto mt-40 flex max-w-xl flex-col justify-center">
@@ -47,80 +48,89 @@
 
 
     
-    <div class="container mx-auto mt-2 flex max-w-3xl flex-col justify-center">
+    <div class="container mx-auto mt-2 flex max-w-4xl flex-col justify-center">
       {% include intro.html %}
+    </div>
     
-    <div class="mx-auto mt-5 max-w-6xl">{% include carousel-1.html %}</div>
-    <div class="container mx-auto mt-2 flex max-w-3xl flex-col justify-center">
+    <div class="mx-auto mt-5 max-w-4xl">
+      {% include carousel-1.html %}
+    </div>
+
+    <div class="container mx-auto mt-2 flex max-w-4xl flex-col justify-center">
       {% include cocreatief.html %}
-
-
     </div>
-      <div class="container mx-auto mt-5 max-w-5xl">
+    
+    <div class="container mx-auto mt-5 max-w-4xl">
       {% include carousel-7.html %}
+    </div>
+
+    <div class="container mx-auto mt-2 flex max-w-4xl flex-col justify-center">
+    {% include programma.html %}
+    </div>
+
+    <div class="container mx-auto mt-5 max-w-4xl">
+    {% include carousel-4.html %}
+    </div>
+
+    <div class="container mx-auto mt-2 flex max-w-4xl flex-col justify-center">
+    {% include wanneer.html %}
+    </div>
+       
+    <div class="container mx-auto mt-5 max-w-4xl">
+    {% include carousel-3.html %}
+    </div>
+
+    <div class="container mx-auto mt-2 flex max-w-4xl flex-col justify-center">
+    {% include waar.html %}
+    </div>  
+
+    <div class="container mx-auto mt-5 max-w-4xl">
+    {% include carousel-5.html %}
+    </div>
+
+    <div class="container mx-auto mt-2 flex max-w-4xl flex-col justify-center">
+    {% include eten-drinken.html %}
+    </div>
+
+    <div class="container mx-auto mt-1 max-w-4xl">
+    {% include carousel-6.html %}
+    </div>
+
+    <div class="container mx-auto mt-2 flex max-w-4xl flex-col justify-center">
+    {% include kosten.html %}
+    </div>
+
+    <div class="mx-auto max-w-4xl">
+    {% include carousel-2.html %}
+    </div>
+
+    <div class="container mx-auto mt-2 flex max-w-4xl flex-col justify-center">
+    {% include overnachten.html %}
+    </div>
     
+    <div class="container mx-auto mt-5 max-w-4xl">
+    {% include carousel-8.html %}
+    </div>
 
-    
+    <div class="container mx-auto mt-2 flex max-w-4xl flex-col justify-center">
+    {% include belangrijk.html %}
+    </div>
 
-      <div class="container mx-auto mt-2 flex max-w-3xl flex-col justify-center">
-      {% include programma.html %}
-
-  </div>
     <div class="container mx-auto mt-5 max-w-5xl">
-      {% include carousel-4.html %}
+    {% include carousel-9.html %}
     </div>
 
-      <div class="container mx-auto mt-2 flex max-w-3xl flex-col justify-center">
-      {% include wanneer.html %}
-
-       <div class="container mx-auto mt-5 max-w-6xl">
-      {% include carousel-3.html %}
+    <div class="container mx-auto mt-20 flex max-w-4xl flex-col justify-center">
+    {% include nieuwsbrieven-links.html %}
     </div>
 
-       <div class="container mx-auto mt-2 flex max-w-3xl flex-col justify-center">
-      {% include waar.html %}
-   
-    <!-- <div class="container mx-auto mt-20 flex max-w-3xl flex-col justify-center">
-      {% include vervoer.html %}
-    </div> -->
-   
-  
-    
-    <div class="container mx-auto mt-5 max-w-6xl">
-      {% include carousel-5.html %}
-    </div>
-    <div class="container mx-auto mt-2 flex max-w-3xl flex-col justify-center">
-      {% include eten-drinken.html %}
-    </div>
-    <div class="container mx-auto mt-1 max-w-5xl">
-      {% include carousel-6.html %}
-      <div class="container mx-auto mt-2 flex max-w-3xl flex-col justify-center">
-      {% include kosten.html %}
-    </div>
-     </div>
-    <div class="mx-auto max-w-4xl">{% include carousel-2.html %}</div>
-    </div>
-    <div class="container mx-auto mt-2 flex max-w-3xl flex-col justify-center">
-      {% include overnachten.html %}
+    <div>
+      {% include nieuwsbrief-form.html %}
     </div>
     
-      </div>
-    <div class="container mx-auto mt-5 max-w-6xl">
-      {% include carousel-8.html %}
-    
-    </div>
-    <div class="container mx-auto mt-2 flex max-w-3xl flex-col justify-center">
-      {% include belangrijk.html %}
-    </div>
-    <div class="container mx-auto mt-5 max-w-5xl">
-      {% include carousel-9.html %}
-   <div class="container mx-auto mt-20 flex max-w-3xl flex-col justify-center">
-      {% include nieuwsbrieven-links.html %}
-    </div>
-    {% include nieuwsbrief-form.html %}
-    <div class="container mx-auto mt-2 flex max-w-3xl flex-col justify-center">
+    <div class="container mx-auto mt-2 flex max-w-4xl flex-col justify-center">
       <h3 class="text-2xl">Nog vragen?</h3>
-      
+   
       <p class="mb-0">
         Mail:
         <a href="mailto:eaumontjardin@gmail.com">eaumontjardin@gmail.com</a>
@@ -134,11 +144,16 @@
       <p>
         Of via een van de organisatoren (Jip, Floris, Sen, Quincy, Bram en Ruerd).
       </p>
-          <div class="container mx-auto mt-5 max-w-5xl">
-      {% include carousel-smoelenboek.html %}
-    </div>
+     </div>
 
+    <div class="container mx-auto mt-5 max-w-5xl">
+    {% include carousel-smoelenboek.html %}
     </div>
-    {% include footer.html %}
   </body>
+  
+
+  
+  {% include footer.html %} 
+  
+  
 </html>
