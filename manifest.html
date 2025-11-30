@@ -1,0 +1,41 @@
+---
+---
+
+<html lang="NL">
+  <head>
+    <!-- Image for next to website in explorer -->
+    <link rel="icon" type="image/png" href="/favicon.png">
+  
+
+
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Preahvihear&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0;" />
+  </head>
+  <body>
+    {% include nav.html %}
+    <div class="container mx-auto mt-40 flex max-w-xl flex-col justify-center">
+      <div class="hero">
+        <h1 class="mb-5 mt-2 text-center text-4xl md:text-6xl">
+          <span class="center-text"></span>
+          <br/> Manifest Eau Mon Jardin
+        </h1>
+      </div>
+    </div>
+     
+
+
+    
+    <div class="container mx-auto mt-2 flex max-w-3xl flex-col justify-center text-center text-xl">
+      {% include manifest.html %}
+
+    </div>
+    {% include footer.html %}
+  </body>
+</html>
