@@ -121,5 +121,23 @@
   font-size: 0.875rem !important; // ~text-sm
   line-height: 1.25rem;
   margin-right: 0;
-  color: rgb(26, 78, 39);
+  color: #1a1a1a !important;
+}
+
+// Voeg een vertraging toe voordat het dropdown verdwijnt
+.nav .group:hover .nav__drop,
+.nav .group:focus-within .nav__drop {
+  display: flex;
+  transition-delay: 0.5s;
+}
+
+.nav .group .nav__drop {
+  transition: opacity 0.3s ease-in-out;
+  opacity: 0;
+}
+
+.nav .group:hover .nav__drop,
+.nav .group:focus-within .nav__drop {
+  opacity: 1;
+  transition-delay: 0s;
 }
