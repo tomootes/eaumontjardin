@@ -8,13 +8,13 @@
     <nav class="flex items-center justify-center gap-8 flex-wrap ">
 
       <!-- FESTIVAL + DROPDOWN -->
-      <div class="relative group">
-        <a href="{{ site.baseurl }}/" class="text-2xl md:text-xl flex items-center gap-1">
+      <div class="relative group" id="festivalDropdown">
+        <button type="button" onclick="toggleDropdown(event)" class="text-2xl md:text-xl inline-flex items-center gap-1 bg-transparent border-0 text-white font-bold cursor-pointer p-0 m-0 underline leading-normal">
           Festival <span class="text-sm"></span>
-        </a>
+        </button>
 
         <!-- Dropdown -->
-        <div class=" flex nav__drop absolute left-0 top-full pt-4 hidden w-56 flex-col rounded bg-white shadow-lg group-hover:flex z-50">
+        <div id="dropdownMenu" class="flex nav__drop absolute left-0 top-full pt-4 hidden w-56 flex-col rounded bg-white text-black shadow-lg group-hover:flex z-50">
           <a href="{{ site.baseurl }}/#cocreatief" class="px-4 py-2 text-sm hover:bg-gray-100">Co-creatief</a>
           <a href="{{ site.baseurl }}/#programma" class="px-4 py-2 text-sm hover:bg-gray-100">Programma</a>
           <a href="{{ site.baseurl }}/#wanneer" class="px-4 py-2 text-sm hover:bg-gray-100">Wanneer</a>
@@ -42,3 +42,45 @@
 
   </div>
 </div>
+
+<script>
+// ============================================
+// DROPDOWN MENU JAVASCRIPT VOOR MOBIEL & DESKTOP
+// ============================================
+// Dit script zorgt ervoor dat het dropdown menu goed werkt op telefoons
+// en automatisch sluit na een klik op een menu-item
+
+// Functie: Open/sluit dropdown bij klik op "Festival" button
+function toggleDropdown(event) {
+  event.stopPropagation(); // Voorkom dat klik doorgaat naar document (anders sluit ie meteen weer)
+  const dropdown = document.getElementById('dropdownMenu');
+  // Wissel tussen verborgen (hidden) en zichtbaar (flex)
+  dropdown.classList.toggle('hidden');
+  dropdown.classList.toggle('flex');
+}
+
+// Event Listener: Sluit dropdown als je ergens anders op de pagina klikt
+document.addEventListener('click', function(event) {
+  const dropdown = document.getElementById('dropdownMenu');
+  const festivalDiv = document.getElementById('festivalDropdown');
+  
+  // Check of de klik BUITEN het Festival dropdown was
+  if (dropdown && festivalDiv && !festivalDiv.contains(event.target)) {
+    dropdown.classList.add('hidden');   // Verberg dropdown
+    dropdown.classList.remove('flex');  // Zet display terug
+  }
+});
+
+// Event Listener: Sluit dropdown automatisch na klik op een menu-item (bijv. "Programma")
+document.addEventListener('DOMContentLoaded', function() {
+  const dropdownLinks = document.querySelectorAll('#dropdownMenu a');
+  dropdownLinks.forEach(link => {
+    link.addEventListener('click', function() {
+      const dropdown = document.getElementById('dropdownMenu');
+      // Verberg dropdown zodat het niet blijft plakken na navigatie
+      dropdown.classList.add('hidden');
+      dropdown.classList.remove('flex');
+    });
+  });
+});
+</script>
