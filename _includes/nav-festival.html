@@ -9,21 +9,21 @@
 
       <!-- FESTIVAL + DROPDOWN -->
       <div class="relative group" id="festivalDropdown">
-        <button type="button" onclick="toggleDropdown(event)" class="text-2xl md:text-xl inline-flex items-center gap-1 bg-transparent border-0 text-white font-bold cursor-pointer p-0 m-0 underline leading-normal">
+        <button type="button" onclick="toggleDropdown(event)" ondblclick="window.location.href='{{ site.baseurl }}/'" class="text-2xl md:text-xl inline-flex items-center gap-1 bg-transparent border-0 text-white font-bold cursor-pointer p-0 m-0 underline leading-normal">
           Festival <span class="text-sm"></span>
         </button>
 
         <!-- Dropdown -->
         <div id="dropdownMenu" class="flex nav__drop absolute left-0 top-full pt-4 hidden w-56 flex-col rounded bg-white text-black shadow-lg group-hover:flex z-50">
-          <a href="{{ site.baseurl }}/#cocreatief" class="px-4 py-2 text-sm hover:bg-gray-100">Co-creatief</a>
-          <a href="{{ site.baseurl }}/#programma" class="px-4 py-2 text-sm hover:bg-gray-100">Programma</a>
-          <a href="{{ site.baseurl }}/#wanneer" class="px-4 py-2 text-sm hover:bg-gray-100">Wanneer</a>
-          <a href="{{ site.baseurl }}/#waar" class="px-4 py-2 text-sm hover:bg-gray-100">Waar/Vervoer</a>
-          <a href="{{ site.baseurl }}/#Voedselprogramma" class="px-4 py-2 text-sm hover:bg-gray-100">Voedselprogramma</a>
-          <a href="{{ site.baseurl }}/#Tickets" class="px-4 py-2 text-sm hover:bg-gray-100">Tickets</a>
-          <a href="{{ site.baseurl }}/#Kamperen" class="px-4 py-2 text-sm hover:bg-gray-100">Kamperen</a>
-          <a href="{{ site.baseurl }}/#belangrijk" class="px-4 py-2 text-sm hover:bg-gray-100">Belangrijk</a>
-          <a href="{{ site.baseurl }}/#contact" class="px-4 py-2 text-sm hover:bg-gray-100">Contact</a>
+          <a href="{{ site.baseurl }}/#cocreatief" class="px-4 py-2 text-sm hover:bg-gray-100" onclick="closeDropdown()">Co-creatief</a>
+          <a href="{{ site.baseurl }}/#programma" class="px-4 py-2 text-sm hover:bg-gray-100" onclick="closeDropdown()">Programma</a>
+          <a href="{{ site.baseurl }}/#wanneer" class="px-4 py-2 text-sm hover:bg-gray-100" onclick="closeDropdown()">Wanneer</a>
+          <a href="{{ site.baseurl }}/#waar" class="px-4 py-2 text-sm hover:bg-gray-100" onclick="closeDropdown()">Waar/Vervoer</a>
+          <a href="{{ site.baseurl }}/#Voedselprogramma" class="px-4 py-2 text-sm hover:bg-gray-100" onclick="closeDropdown()">Voedselprogramma</a>
+          <a href="{{ site.baseurl }}/#Tickets" class="px-4 py-2 text-sm hover:bg-gray-100" onclick="closeDropdown()">Tickets</a>
+          <a href="{{ site.baseurl }}/#Kamperen" class="px-4 py-2 text-sm hover:bg-gray-100" onclick="closeDropdown()">Kamperen</a>
+          <a href="{{ site.baseurl }}/#belangrijk" class="px-4 py-2 text-sm hover:bg-gray-100" onclick="closeDropdown()">Belangrijk</a>
+          <a href="{{ site.baseurl }}/#contact" class="px-4 py-2 text-sm hover:bg-gray-100" onclick="closeDropdown()">Contact</a>
         </div>
       </div>
 
@@ -59,6 +59,13 @@ function toggleDropdown(event) {
   dropdown.classList.toggle('flex');
 }
 
+// Functie: Sluit dropdown (gebruikt bij klik op menu-items)
+function closeDropdown() {
+  const dropdown = document.getElementById('dropdownMenu');
+  dropdown.classList.add('hidden');
+  dropdown.classList.remove('flex');
+}
+
 // Event Listener: Sluit dropdown als je ergens anders op de pagina klikt
 document.addEventListener('click', function(event) {
   const dropdown = document.getElementById('dropdownMenu');
@@ -72,14 +79,12 @@ document.addEventListener('click', function(event) {
 });
 
 // Event Listener: Sluit dropdown automatisch na klik op een menu-item (bijv. "Programma")
+// (Deze event listener is nu minder nodig omdat we closeDropdown() inline gebruiken)
 document.addEventListener('DOMContentLoaded', function() {
   const dropdownLinks = document.querySelectorAll('#dropdownMenu a');
   dropdownLinks.forEach(link => {
     link.addEventListener('click', function() {
-      const dropdown = document.getElementById('dropdownMenu');
-      // Verberg dropdown zodat het niet blijft plakken na navigatie
-      dropdown.classList.add('hidden');
-      dropdown.classList.remove('flex');
+      closeDropdown();
     });
   });
 });
