@@ -17,10 +17,13 @@
       rel="stylesheet"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0;" />
-  </head>
   
+
+  </head>
+
   <body>
-    {% include nav.html %}
+    {% include nav-festival.html %}
+    
     <div class="container mx-auto mt-40 flex max-w-xl flex-col justify-center">
       <div class="hero">
         <h1 class="mb-5 mt-2 text-center text-4xl md:text-6xl">
@@ -29,6 +32,7 @@
         </h1>
       </div>
     </div>
+   
      
 
 
@@ -97,7 +101,7 @@
     </div>
 
     <div class="container mx-auto mt-2 flex max-w-4xl flex-col justify-center">
-    {% include kosten.html %}
+    {% include Tickets.html %}
     </div>
 
     <div class="mx-auto max-w-4xl">
@@ -105,7 +109,7 @@
     </div>
 
     <div class="container mx-auto mt-2 flex max-w-4xl flex-col justify-center">
-    {% include overnachten.html %}
+    {% include Kamperen.html %}
     </div>
     
     <div class="container mx-auto mt-5 max-w-4xl">
@@ -116,37 +120,16 @@
     {% include belangrijk.html %}
     </div>
 
-    <div class="container mx-auto mt-5 max-w-5xl">
+    <div class="container mx-auto mt-4 max-w-4xl">
     {% include carousel-9.html %}
     </div>
 
-    <div class="container mx-auto mt-20 flex max-w-4xl flex-col justify-center">
-    {% include nieuwsbrieven-links.html %}
-    </div>
-
-    <div>
-      {% include nieuwsbrief-form.html %}
-    </div>
-    
-    <div class="container mx-auto mt-2 flex max-w-4xl flex-col justify-center">
-      <h3 class="text-2xl">Nog vragen?</h3>
    
-      <p class="mb-0">
-        Mail:
-        <a href="mailto:eaumontjardin@gmail.com">eaumontjardin@gmail.com</a>
-      </p>
-      <p class="mt-0">
-        <!-- Insta
-        <a target="_blank" href="https://www.instagram.com/eau.mont.jardin/"
-          >@eaumontjardin
-        </a> -->
-      </p>
-      <p>
-        Of via een van de organisatoren (Jip, Floris, Sen, Quincy, Bram en Ruerd).
-      </p>
-     </div>
+     <div class="container mx-auto mt-4 max-w-4xl">
+    {% include contact.html %}
+    </div>
 
-    <div class="container mx-auto mt-5 max-w-5xl">
+    <div class="container mx-auto mt-5 max-w-4xl">
     {% include carousel-smoelenboek.html %}
     </div>
   </body>

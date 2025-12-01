@@ -1,0 +1,44 @@
+<div class="nav pb-5 pt-5">
+  <a class="nav__logo" href="{{site.baseurl}}/">
+    <img src="{{ site.baseurl }}/assets/images/logo.svg" alt="LOGO" />
+  </a>
+
+  <div class="container mx-auto md:max-w-6xl flex items-center justify-center flex-wrap gap-6 ">
+
+    <nav class="flex items-center justify-center gap-8 flex-wrap ">
+
+      <!-- FESTIVAL + DROPDOWN -->
+      <div class="relative group">
+        <a href="{{ site.baseurl }}/" class="text-2xl md:text-xl flex items-center gap-1">
+          Festival <span class="text-sm"></span>
+        </a>
+
+        <!-- Dropdown -->
+        <div class=" flex nav__drop absolute left-0 top-full pt-4 hidden w-56 flex-col rounded bg-white shadow-lg group-hover:flex z-50">
+          <a href="{{ site.baseurl }}/#cocreatief" class="px-4 py-2 text-sm hover:bg-gray-100">Co-creatief</a>
+          <a href="{{ site.baseurl }}/#programma" class="px-4 py-2 text-sm hover:bg-gray-100">Programma</a>
+          <a href="{{ site.baseurl }}/#wanneer" class="px-4 py-2 text-sm hover:bg-gray-100">Wanneer</a>
+          <a href="{{ site.baseurl }}/#waar" class="px-4 py-2 text-sm hover:bg-gray-100">Waar/Vervoer</a>
+          <a href="{{ site.baseurl }}/#Voedselprogramma" class="px-4 py-2 text-sm hover:bg-gray-100">Voedselprogramma</a>
+          <a href="{{ site.baseurl }}/#Tickets" class="px-4 py-2 text-sm hover:bg-gray-100">Tickets</a>
+          <a href="{{ site.baseurl }}/#Kamperen" class="px-4 py-2 text-sm hover:bg-gray-100">Kamperen</a>
+          <a href="{{ site.baseurl }}/#belangrijk" class="px-4 py-2 text-sm hover:bg-gray-100">Belangrijk</a>
+          <a href="{{ site.baseurl }}/#contact" class="px-4 py-2 text-sm hover:bg-gray-100">Contact</a>
+        </div>
+      </div>
+
+      <!-- LOSSE LINKS -->
+      <a href="{{ site.baseurl }}/nieuwsbrief" class="text-2xl md:text-xl">Nieuwsbrief</a>
+      <a href="{{ site.baseurl }}/manifest" class="text-2xl md:text-xl">Manifest</a>
+      <a href="https://winkel.eaumontjardin.fr/wordpress/" class="text-2xl md:text-xl">Webshop</a>
+
+    </nav>
+
+    <!-- DONEER BUTTON RECHTS -->
+    <a class="nav__tickets" href="https://winkel.eaumontjardin.fr/wordpress/?page_id=751">
+      <img src="{{ site.baseurl }}/assets/images/star.svg" alt>
+      <h2>Doneer</h2>
+    </a>
+
+  </div>
+</div>
