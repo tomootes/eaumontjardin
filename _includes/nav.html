@@ -2,37 +2,87 @@
   <a class="nav__logo" href="{{site.baseurl}}/">
     <img src="{{ site.baseurl }}/assets/images/logo.svg" alt="LOGO" />
   </a>
-  <div class="container mx-auto md:max-w-6xl">
-    <nav>
-        <a href="{{ site.baseurl }}" class="text-xl md:text-base">Festival</a>
-      <a href="{{ site.baseurl }}/#cocreatief" class="text-xl md:text-base">Co-creatief</a>
-      <a href="{{ site.baseurl }}/#programma" class="text-xl md:text-base">Programma</a>
-      <a href="{{ site.baseurl }}/#wanneer" class="text-xl md:text-base">Wanneer</a>
-      <a href="{{ site.baseurl }}/#waar" class="text-xl md:text-base">Waar/Vervoer</a>
-      <a href="{{ site.baseurl }}/#eten-en-drinken" class="text-xl md:text-base">Voedselprogramma</a>
-      <a href="{{ site.baseurl }}/#kosten" class="text-xl md:text-base">Tickets</a>
-      <a href="{{ site.baseurl }}/#overnachten" class="text-xl md:text-base">Kamperen</a>
-      <a href="{{ site.baseurl }}/#belangrijk" class="text-xl md:text-base">Belangrijk</a>
-      <a href="{{ site.baseurl }}/#nieuwsbrief" class="text-xl md:text-base">Nieuwsbrief</a>
-      <a href="{{ site.baseurl }}/manifest" class="text-xl md:text-base">Manifest</a>
-        <!-- class="nieuwsbrief-nav-item rounded-md text-xl text-black md:text-base"
-        >Nieuwsbrief</a -->
-       
-        
-        <!-- Link to ticketshop!! -->
-        <!-- <a href="https://winkel.eaumontjardin.fr/wordpress/" class="text-xl md:text-base">Tickets</a> -->
 
-   
+  <div class="container mx-auto md:max-w-6xl flex items-center justify-center flex-wrap gap-6 ">
+
+    <nav class="flex items-center justify-center gap-8 flex-wrap ">
+
+          <!-- LOSSE LINKS -->
+      <a href="{{ site.baseurl }}/" class="text-2xl md:text-xl">Nieuwsbrief</a> 
+      <a href="{{ site.baseurl }}/nieuwsbrief" class="text-2xl md:text-xl">Nieuwsbrief</a>
+      <a href="{{ site.baseurl }}/manifest" class="text-2xl md:text-xl">Manifest</a>
+      <a href="https://winkel.eaumontjardin.fr/wordpress/" class="text-2xl md:text-xl">Tickets</a>
+      <a href="https://winkel.eaumontjardin.fr/wordpress/?page_id=7" class="text-2xl md:text-xl">Winkelwagen</a>
+      <a href="https://winkel.eaumontjardin.fr/wordpress/?page_id=751" class="text-2xl md:text-xl">Doneer</a>
     </nav>
-    
 
-    <!-- (bus)ticket/donatie button zon rechts boven -->
+    <!-- DONEER BUTTON RECHTS -->
+    <a class="nav__tickets" href="https://winkel.eaumontjardin.fr/wordpress/?page_id=751">
+      <img src="{{ site.baseurl }}/assets/images/star.svg" alt>
+      <h2>Doneer</h2>
+    </a>
 
-    
-    <a class="nav__tickets"
-            href="https://winkel.eaumontjardin.fr/wordpress/?page_id=751">
-            <img src="{{ site.baseurl }}/assets/images/star.svg" alt>
-            <h2>Doneer </h2>
-        </a>
   </div>
 </div>
+
+<script>
+// ============================================
+// DROPDOWN MENU JAVASCRIPT VOOR MOBIEL & DESKTOP
+// ============================================
+// Dit script zorgt ervoor dat het dropdown menu goed werkt op telefoons
+// en automatisch sluit na een klik op een menu-item
+
+// Functie: Open/sluit dropdown bij klik op "Festival" button
+function toggleDropdown(event) {
+  event.stopPropagation(); // Voorkom dat klik doorgaat naar document (anders sluit ie meteen weer)
+  const dropdown = document.getElementById('dropdownMenu');
+  // Wissel tussen verborgen (hidden) en zichtbaar (flex)
+  dropdown.classList.toggle('hidden');
+  dropdown.classList.toggle('flex');
+}
+
+// Functie: Sluit dropdown (gebruikt bij klik op menu-items)
+function closeDropdown() {
+  const dropdown = document.getElementById('dropdownMenu');
+  dropdown.classList.add('hidden');
+  dropdown.classList.remove('flex');
+}
+
+// Functie: Scroll naar sectie met offset zodat titel op 1/3e van scherm staat
+function smoothScrollTo(targetId) {
+  const element = document.getElementById(targetId);
+  if (element) {
+    // Bereken positie: element top - (1/3 van viewport height)
+    const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+    const offsetPosition = elementPosition - (window.innerHeight / 8);
+    
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: 'smooth'
+    });
+  }
+}
+
+// Event Listener: Sluit dropdown als je ergens anders op de pagina klikt
+document.addEventListener('click', function(event) {
+  const dropdown = document.getElementById('dropdownMenu');
+  const festivalDiv = document.getElementById('festivalDropdown');
+  
+  // Check of de klik BUITEN het Festival dropdown was
+  if (dropdown && festivalDiv && !festivalDiv.contains(event.target)) {
+    dropdown.classList.add('hidden');   // Verberg dropdown
+    dropdown.classList.remove('flex');  // Zet display terug
+  }
+});
+
+// Event Listener: Sluit dropdown automatisch na klik op een menu-item (bijv. "Programma")
+// (Deze event listener is nu minder nodig omdat we closeDropdown() inline gebruiken)
+document.addEventListener('DOMContentLoaded', function() {
+  const dropdownLinks = document.querySelectorAll('#dropdownMenu a');
+  dropdownLinks.forEach(link => {
+    link.addEventListener('click', function() {
+      closeDropdown();
+    });
+  });
+});
+</script>
