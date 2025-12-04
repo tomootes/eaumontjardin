@@ -74,7 +74,7 @@ function smoothScrollTo(targetId) {
   if (element) {
     // Bereken positie: element top - (1/3 van viewport height)
     const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
-    const offsetPosition = elementPosition - (window.innerHeight / 4);
+    const offsetPosition = elementPosition - (window.innerHeight / 3);
     
     window.scrollTo({
       top: offsetPosition,
