@@ -68,13 +68,13 @@ function closeDropdown() {
   dropdown.classList.remove('flex');
 }
 
-// Functie: Scroll naar sectie met offset zodat titel op 1/4e van scherm staat
+// Functie: Scroll naar sectie met offset zodat titel op 1/5e van scherm staat
 function smoothScrollTo(targetId) {
   const element = document.getElementById(targetId);
   if (element) {
-    // Bereken positie: element top - (1/4 van viewport height)
+    // Bereken positie: element top - (1/5 van viewport height)
     const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
-    const offsetPosition = elementPosition - (window.innerHeight / 4);
+    const offsetPosition = elementPosition - (window.innerHeight / 5);
     
     window.scrollTo({
       top: offsetPosition,
