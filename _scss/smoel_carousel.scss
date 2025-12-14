@@ -1,0 +1,43 @@
+$carousel-gap: 0.5rem;
+
+@forward "theme";
+
+.carousel {
+    display: flex;
+    flex-direction: column;
+    padding: $carousel-gap;
+    background: white;
+
+    @media (min-width: $sm) {
+        display: grid;
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        grid-gap: $carousel-gap;
+        margin-top: 4rem;
+    }
+
+    &--single {
+        display: flex;
+    }
+
+    &--two {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    &__img {
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        margin-bottom: .5rem;
+        @media (min-width: $sm) {
+            margin-bottom: 0;
+        }
+        p {
+            margin-bottom: 0;
+        }
+    }
+
+    p {
+        font-size: 1rem;
+        margin-bottom: 0 !important;
+    }
+}
