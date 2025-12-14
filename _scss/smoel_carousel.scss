@@ -2,7 +2,7 @@ $carousel-gap: 0.5rem;
 
 @forward "theme";
 
-.carousel {
+.smoel-carousel {
     display: flex;
     flex-direction: column;
     padding: $carousel-gap;
