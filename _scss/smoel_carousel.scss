@@ -13,6 +13,7 @@ $carousel-gap: 0.5rem;
         grid-template-columns: repeat(6, minmax(0, 1fr));
         grid-gap: $carousel-gap;
         margin-top: 4rem;
+        font-family: "Preahvihear", sans-serif;
     }
 
     &--single {
