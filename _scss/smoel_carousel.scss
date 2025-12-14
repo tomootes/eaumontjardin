@@ -10,7 +10,7 @@ $carousel-gap: 0.5rem;
 
     @media (min-width: $sm) {
         display: grid;
-        grid-template-columns: repeat(6, minmax(0, 1fr));
+        grid-template-columns: repeat(4, minmax(0, 1fr));
         grid-gap: $carousel-gap;
         margin-top: 4rem;
         font-family: "Preahvihear", sans-serif;
