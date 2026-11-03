@@ -3,221 +3,194 @@
 *Een handleiding voor Tom en Ruerd, bosnymfen van het eerste uur*
 *Op maat gemaakt na een verkenning van `emj-webshop` (winkel.eaumontjardin.fr) op 3 november 2026*
 
-Kijk eens aan, daar staan jullie dan, Tom en Ruerd, onder de oude eik met de pet op en de mouwen al opgestroopt. Een goede bosbewoner weet dat je een oude boom niet in één nacht verplant. Eerst kijk je hoe de wortels lopen. Dan graaf je met beleid. En je zet altijd een emmer water klaar voor als het tegenzit.
+Kijk eens aan, daar staan jullie dan, Tom en Ruerd, onder de oude eik met de pet op en de mouwen al opgestroopt. De oude boom gaan we niet meer verplanten. We zaaien opnieuw, op een nieuw en ruimer stuk grond, en nemen de wortels mee die het waard zijn.
 
-We zijn met een lantaarn langs de wortels van jullie boom gegaan. We hebben **niets veranderd**, alleen gekeken. Wat we zagen staat hieronder, en daarna volgt het plan.
+**Doel:** de webshop verhuizen naar een **nieuwe VPS met Ubuntu 26.04** en de PHP-versie die daarbij hoort.
 
-**Doel:**
-
-- Ubuntu upgraden van 22.04 naar 26.04
-- PHP upgraden naar de laatste gepatchte versie
-
-**Randvoorwaarde:** de website (WordPress/WooCommerce) met database moet blijven bestaan.
+**Randvoorwaarde:** de website (WordPress/WooCommerce) en de database moeten heel blijven.
 
 ---
 
-## 🔦 Wat er in het bos groeit
+## 🔦 Wat er op het oude stuk grond groeit
 
 | Wat | Gevonden |
 |---|---|
-| Machine | Xen-VPS, 185.88.140.106. De kernel (6.12.53) komt van de hoster, niet van Ubuntu: er zijn geen `linux-image`-pakketten geïnstalleerd |
-| Ubuntu | 22.04 LTS, al **354 dagen** niet herstart, **114 updates** staan klaar |
+| Machine | Xen-VPS `emj-webshop`, 185.88.140.106, Ubuntu 22.04 |
 | Schijf | **10 GB, 100% vol (nog 55 MB vrij)** |
 | Webserver | nginx 1.18, één site: `winkel.eaumontjardin.fr` |
-| PHP | **8.1.2-1ubuntu2.11 (februari 2023)**, via `php8.1-fpm`. Extensies: curl, gd, intl, mbstring, mysql, soap, xml, xmlrpc, zip, opcache |
-| Apt-bronnen | Alleen de Ubuntu-archieven (main en universe), **geen PPA's** |
-| Database | MySQL 8.0.32, database `wordpress` (44 MB), gebruiker `wordpressuser` |
+| PHP | 8.1 via `php8.1-fpm`. Extensies: curl, gd, intl, mbstring, mysql, soap, xml, xmlrpc, zip, opcache |
+| Database | MySQL 8.0.32, database `wordpress` (44 MB), gebruiker `wordpressuser` (`caching_sha2_password`) |
 | Website | WordPress 7.0.7 in `/var/www/winkel.eaumontjardin.fr/wordpress` (490 MB), thema twentytwentyfour-child, 16 plugins waaronder WooCommerce, WooCommerce Payments, GiveWP, Photonic, Visual Portfolio en WC GSheetConnector Pro |
 | Certificaat | Let's Encrypt via de certbot-snap (nginx-plugin), geldig tot **9 januari 2027** |
-| Firewall | ufw staat aan met alleen 443 open, en **daarnaast** staan er eigen iptables-regels voor 22, 80 en 443 |
-| Back-ups | **Geen gevonden.** Er is geen cronjob, en `/var/www/backup` is leeg |
+| Back-ups | **Geen gevonden** |
 
----
+Twee dingen om te weten voor je begint:
 
-## 🚨 Drie dingen die eerst aandacht vragen
+- **De winkel is dicht.** nginx is op 22 oktober 2026 om 06:15 met de hand gestopt en draait sindsdien niet. Ga na of dat met opzet was. Voor de verhuizing komt het goed uit: er komen nu geen nieuwe bestellingen binnen die je bij de overstap kwijt kunt raken.
+- **De oude schijf is vol.** Een dump op de oude server wegschrijven lukt dus niet. Daarom streamen we hieronder alles via SSH direct naar je eigen machine.
 
-### 1. De winkel is dicht
-
-**nginx draait niet.** Op 22 oktober 2026 om 06:15 heeft root hem met de hand gestopt (`nginx -s quit`), en sindsdien is de webshop onbereikbaar. Misschien was dat met opzet. Ga het in ieder geval na. Moet de winkel weer open, dan is dat:
-
-```bash
-sudo systemctl start nginx
-```
-
-Zolang nginx uit staat, kan certbot het certificaat ook niet vernieuwen. Dat moet vóór 9 januari 2027 gebeuren, en certbot gaat het rond half december proberen.
-
-### 2. De schijf is vol
-
-Een upgrade naar een nieuwe Ubuntu-versie heeft **enkele gigabytes** vrij nodig. Er is nu 55 MB vrij. Dit zijn de grootste vreters:
-
-| Wat | Grootte | Wat je ermee kunt doen |
-|---|---|---|
-| `/root/.vscode-server` (27 oude serverversies, plus een Copilot-index van 674 MB) | **5,9 GB** | Verwijderen. VS Code zet het opnieuw neer bij de volgende verbinding |
-| systemd-journal | 800 MB | `journalctl --vacuum-size=100M` |
-| `/var/log/btmp.1` (mislukte inlogpogingen, oftewel inbrekers aan de deur) | 168 MB | Leegmaken |
-| snapd-cache | 117 MB | Ruimt zichzelf op |
-
-```bash
-# Sluit eerst alle VS Code Remote-sessies naar deze server
-sudo rm -rf /root/.vscode-server
-sudo journalctl --vacuum-size=100M
-sudo truncate -s 0 /var/log/btmp.1
-df -h /
-```
-
-Daarmee komt er zo'n **6,5 GB** vrij. Ga liever niet structureel met VS Code Remote als root op deze kleine productieserver werken: dan loopt hij zo weer vol.
-
-Overweeg daarnaast de schijf bij de hoster te **vergroten naar 20 GB of meer**. 10 GB is krap voor een webshop en twee release-upgrades.
-
-### 3. Er zijn geen back-ups
-
-Een webshop met bestellingen en klantgegevens zonder back-up is als een eekhoorn zonder voorraad in november. Regel dit eerst, los van de upgrade (zie stap 1).
-
----
-
-## 🦔 De keuze: verplanten of opnieuw zaaien?
-
-Kijkend naar dit bos raden we **nadrukkelijk aan om opnieuw te zaaien:**
-
-- De site is klein (490 MB aan bestanden en 44 MB database), dus verhuizen is zo gebeurd.
-- De huidige schijf is te klein, en de server zit vol oude rommel.
-- Er moeten twee release-upgrades achter elkaar, en elk van die twee kan de webshop breken.
-- De kernel komt van de hoster. Of de 26.04-gebruikersomgeving prettig samengaat met hun Xen-kernel, weet je pas als het draait.
-
-### Pad A, aanbevolen: een nieuwe VPS met 26.04
-
-1. Bestel een nieuwe VPS met **Ubuntu 26.04** en minstens **20 GB** schijf.
-2. Installeer daarop nginx, MySQL en PHP uit de 26.04-archieven (zie stap 5 voor de pakketlijst).
-3. Zet de bestanden (`rsync`) en de database (dump en restore) over. Kopieer de nginx-config en pas de PHP-FPM-socket aan.
-4. Test via je eigen `/etc/hosts`, zodat alleen jij de nieuwe server ziet.
-5. Zet de DNS van `winkel.eaumontjardin.fr` om en vraag met certbot een nieuw certificaat aan.
-6. Laat de oude server nog een paar weken staan als vangnet en zeg hem daarna op.
-
-### Pad B: in-place upgraden op deze server
-
-Dan volg je de stappen hieronder.
+In de voorbeelden heet de oude server `emj-webshop` en de nieuwe `emj-nieuw`. Zet die namen in je eigen `~/.ssh/config`.
 
 ---
 
 ## 🌰 Stap 1: Wintervoorraad aanleggen (back-ups)
 
-Leg dit allemaal weg **buiten de server**, op je eigen machine of op opslag elders:
+Haal alles binnen op je eigen machine. Dit is meteen je vangnet en het materiaal voor de verhuizing.
 
 ```bash
-# Op de server: database dumpen. Root heeft een wachtwoord, dus we gebruiken het onderhoudsaccount van Debian
-sudo mysqldump --defaults-file=/etc/mysql/debian.cnf \
+mkdir -p emj-backup/etc
+
+# Database, gestreamd zodat er niets op de volle schijf hoeft
+ssh emj-webshop 'sudo mysqldump --defaults-file=/etc/mysql/debian.cnf \
   --single-transaction --routines --triggers --events \
-  --databases wordpress | gzip > /tmp/wordpress-$(date +%F).sql.gz
+  --databases wordpress | gzip' > emj-backup/wordpress-$(date +%F).sql.gz
 
-# Vanaf je eigen machine: alles binnenhalen
-rsync -az emj-webshop:/tmp/wordpress-*.sql.gz ./emj-backup/
-rsync -az emj-webshop:/var/www/winkel.eaumontjardin.fr/ ./emj-backup/www/
-rsync -az emj-webshop:/etc/nginx emj-webshop:/etc/php emj-webshop:/etc/mysql ./emj-backup/etc/
-ssh emj-webshop 'sudo tar czf - /etc/letsencrypt' > ./emj-backup/letsencrypt.tgz
+# Bestanden en configuratie
+rsync -az --rsync-path="sudo rsync" emj-webshop:/var/www/winkel.eaumontjardin.fr/ emj-backup/www/
+rsync -az --rsync-path="sudo rsync" emj-webshop:/etc/nginx emj-webshop:/etc/php emj-webshop:/etc/mysql emj-backup/etc/
+ssh emj-webshop 'sudo tar czf - /etc/letsencrypt' > emj-backup/letsencrypt.tgz
+
+# Controle: is de dump compleet?
+zcat emj-backup/wordpress-*.sql.gz | tail -1     # moet eindigen op "-- Dump completed"
 ```
 
-- Maak een **snapshot van de VPS** bij de hoster, als dat kan.
-- Zet daarna een **vaste back-up** op, bijvoorbeeld een nachtelijke dump plus restic of borg naar opslag elders. Dat hoeft niet te wachten op de upgrade.
+Maak er ook een **snapshot van de oude VPS** bij de hoster bij, als dat kan.
 
-## 🍂 Stap 2: Voorbereiden
+## 🌱 Stap 2: Nieuwe grond klaarmaken
+
+Bestel een nieuwe VPS met **Ubuntu 26.04** en minstens **20 GB** schijf. Log in met een SSH-sleutel en maak een eigen gebruiker met sudo, zodat je niet als root werkt.
 
 ```bash
-# Ruimte maken: zie "De schijf is vol" hierboven
-df -h /                      # minstens 5 GB vrij voordat je verdergaat
-
-# Alle openstaande updates binnen 22.04 eerst installeren (dat zijn er 114)
 sudo apt update && sudo apt full-upgrade
-sudo apt autoremove --purge
-sudo reboot                  # de eerste herstart in een jaar, dus kijk of alles netjes terugkomt
+
+# Automatische beveiligingsupdates
+sudo apt install unattended-upgrades
+sudo dpkg-reconfigure -plow unattended-upgrades
+
+# Firewall: één systeem, alleen ufw
+sudo ufw allow 22/tcp
+sudo ufw allow 80/tcp        # certbot heeft 80 nodig om te vernieuwen
+sudo ufw allow 443/tcp
+sudo ufw enable
+
+# Inbrekers aan de deur weren
+sudo apt install fail2ban
 ```
 
-**De MySQL-root-gebruiker** gebruikt nu `mysql_native_password`. Die aanmeldmethode staat in MySQL 8.4, de versie van 26.04, **standaard uit**. Zet root daarom nu al om naar de Ubuntu-standaard, zodat `sudo mysql` zonder wachtwoord werkt:
+Zet daarna in `/etc/ssh/sshd_config` de regel `PasswordAuthentication no` en herstart ssh. **Test eerst in een tweede terminal** of inloggen met je sleutel werkt, voordat je de eerste sessie sluit.
+
+## 🌿 Stap 3: nginx, MySQL en PHP planten
+
+Gebruik de PHP van Ubuntu 26.04 zelf, zonder PPA. Canonical patcht die jarenlang, en met unattended-upgrades blijft hij vanzelf op de laatste patchversie.
 
 ```bash
-sudo mysql --defaults-file=/etc/mysql/debian.cnf \
-  -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH auth_socket;"
-sudo mysql -e "SELECT user, plugin FROM mysql.user;"   # dit moet nu werken
+sudo apt install nginx mysql-server \
+  php-fpm php-mysql php-curl php-gd php-intl php-mbstring php-soap php-xml php-zip
+
+php -v                         # welke PHP-versie is het geworden?
+php -m | grep -i opcache       # opcache hoort er standaard bij
+apt policy php-xmlrpc          # bestaat dit nog? Alleen installeren als een plugin het echt nodig heeft
+ls /run/php/                   # de naam van de FPM-socket, bijvoorbeeld php8.x-fpm.sock
 ```
 
-`wordpressuser` gebruikt al `caching_sha2_password`, dus de website zelf zit goed.
-
-**Plugins:** WordPress 7.0.7 werkt prima op nieuwe PHP-versies, maar zet in de WordPress-admin ook alle **plugins en thema's** op de nieuwste versie. Kijk vooral bij de betaalde of minder bekende plugins, zoals *wc-gsheetconnector-pro*, *photonic*, *integrate-google-drive* en *wpc-name-your-price*, of ze PHP 8.4/8.5 ondersteunen.
-
-## 🌲 Stap 3: Eerste stapsteen, van 22.04 naar 24.04
+Neem eigen PHP-instellingen over uit de back-up, zoals `upload_max_filesize`, `post_max_size` en `memory_limit`. Zo zie je wat er op de oude server afweek van de standaard:
 
 ```bash
-sudo apt install tmux
-tmux new -s upgrade          # raakt de verbinding kwijt? Dan haal je de sessie terug met: tmux attach -t upgrade
-sudo do-release-upgrade
+grep -E '^(upload_max_filesize|post_max_size|memory_limit|max_execution_time)' emj-backup/etc/php/8.1/fpm/php.ini
 ```
 
-- Vraagt hij of hij een configbestand mag vervangen (`php.ini`, `my.cnf`, `nginx.conf`)? Kies dan **"keep your version"**.
-- De upgrader biedt een noodpoort 1022 aan. Die staat in jullie firewall dicht, maar dat is niet erg zolang je in tmux werkt.
-- Er wordt geen kernel geïnstalleerd, want die komt van de hoster. Dat is in orde.
+Zet die waarden in `/etc/php/8.x/fpm/php.ini` op de nieuwe server en herstart `php8.x-fpm`.
 
-**Na de herstart is PHP 8.3 geworden.** De nginx-config wijst dan nog naar de oude socket:
+## 🗄️ Stap 4: De database overzetten
+
+Op 26.04 draait **MySQL 8.4**. `sudo mysql` werkt daar meteen, en `wordpressuser` gebruikt al `caching_sha2_password`, dus daar zit geen probleem.
+
+Zoek het databasewachtwoord op in `emj-backup/www/wordpress/wp-config.php` (`DB_PASSWORD`) en maak de gebruiker aan:
 
 ```bash
-sudo apt install php8.3-fpm php8.3-mysql php8.3-curl php8.3-gd php8.3-intl \
-  php8.3-mbstring php8.3-soap php8.3-xml php8.3-zip php8.3-opcache
-# php-xmlrpc: kijk of het pakket nog bestaat (apt policy php8.3-xmlrpc) en of een plugin het echt nodig heeft
+sudo mysql -e "CREATE USER 'wordpressuser'@'localhost' IDENTIFIED BY '<wachtwoord uit wp-config.php>';"
+```
 
-sudo sed -i 's#php8.1-fpm.sock#php8.3-fpm.sock#' /etc/nginx/sites-available/winkel.eaumontjardin.fr
+Zet de dump erin. Die maakt de database `wordpress` zelf aan:
+
+```bash
+# Vanaf je eigen machine
+scp emj-backup/wordpress-*.sql.gz emj-nieuw:/tmp/
+
+# Op de nieuwe server
+zcat /tmp/wordpress-*.sql.gz | sudo mysql
+sudo mysql -e "GRANT ALL PRIVILEGES ON wordpress.* TO 'wordpressuser'@'localhost';"
+```
+
+## 📦 Stap 5: Bestanden, nginx en het certificaat
+
+```bash
+# Vanaf je eigen machine
+rsync -az --rsync-path="sudo rsync" emj-backup/www/ emj-nieuw:/var/www/winkel.eaumontjardin.fr/
+scp emj-backup/letsencrypt.tgz emj-backup/etc/nginx/sites-available/winkel.eaumontjardin.fr emj-nieuw:/tmp/
+```
+
+```bash
+# Op de nieuwe server
+sudo chown -R www-data:www-data /var/www/winkel.eaumontjardin.fr
+
+# Het bestaande certificaat meenemen, zodat HTTPS meteen werkt
+sudo tar xzf /tmp/letsencrypt.tgz -C /
+sudo snap install --classic certbot
+sudo ln -s /snap/bin/certbot /usr/bin/certbot
+
+# nginx-config overnemen en naar de nieuwe PHP-socket laten wijzen
+sudo cp /tmp/winkel.eaumontjardin.fr /etc/nginx/sites-available/
+sudo sed -i 's#php8.1-fpm.sock#php8.x-fpm.sock#' /etc/nginx/sites-available/winkel.eaumontjardin.fr   # vul de echte versie in
+sudo ln -s /etc/nginx/sites-available/winkel.eaumontjardin.fr /etc/nginx/sites-enabled/
+sudo rm /etc/nginx/sites-enabled/default
 sudo nginx -t && sudo systemctl reload nginx
 ```
 
-Neem eventuele eigen instellingen uit `/etc/php/8.1/fpm/php.ini` over naar `/etc/php/8.3/fpm/php.ini`, zoals `upload_max_filesize` en `memory_limit`.
+## 🔍 Stap 6: Stiekem proeven
 
-**Test de winkel:** de voorpagina, de productpagina's, het winkelmandje, een testbestelling met WooCommerce Payments in testmodus, de wp-admin en de formulieren. Maak daarna **een nieuwe snapshot en een nieuwe dump**.
+Laat alleen je eigen computer naar de nieuwe server kijken. Zet in `/etc/hosts` op je eigen machine:
 
-## 🌳 Stap 4: Tweede stapsteen, van 24.04 naar 26.04
-
-```bash
-sudo apt update && sudo apt full-upgrade && sudo reboot
-tmux new -s upgrade
-sudo do-release-upgrade
+```
+<ip-van-nieuwe-vps>  winkel.eaumontjardin.fr
 ```
 
-- Zegt hij "no new release found"? Kijk dan of in `/etc/update-manager/release-upgrades` de regel `Prompt=lts` staat.
-- MySQL gaat hier van 8.0 naar **8.4**. Dankzij stap 2 heeft dat geen gevolgen meer voor de root-gebruiker.
+**Test de winkel:** de voorpagina, de productpagina's, het winkelmandje, een testbestelling met WooCommerce Payments in testmodus, de wp-admin, de formulieren en of de bevestigingsmails aankomen.
 
-Daarna doe je hetzelfde rondje als bij stap 3, maar dan met de PHP-versie van 26.04 (vraag die op met `apt policy php-fpm`): de `php8.x-*`-pakketten installeren, de socket in de nginx-config aanpassen, de `php.ini` overnemen en de winkel testen.
+Kijk in de WordPress-admin of alle **plugins en thema's** op de nieuwste versie staan. Let vooral op de betaalde of minder bekende plugins, zoals *wc-gsheetconnector-pro*, *photonic*, *integrate-google-drive* en *wpc-name-your-price*: werken ze met de nieuwe PHP-versie?
 
-## 🐌 Stap 5: PHP op de laatste patchversie houden
+Haal de regel uit `/etc/hosts` weg als je klaar bent.
 
-Er staan geen PPA's op deze server, en dat is goed zo. **Blijf bij de PHP van Ubuntu 26.04.** Canonical patcht die jarenlang, en dat is makkelijker te onderhouden dan een PPA.
+## 🧭 Stap 7: De wegwijzer omzetten
 
-Het grootste lek van nu is niet de PHP-versie, maar dat **er al bijna drie jaar niet gepatcht is** (de PHP-build is van februari 2023). Daarom:
-
-```bash
-sudo apt install unattended-upgrades
-sudo dpkg-reconfigure -plow unattended-upgrades
-```
-
-Wil je per se de allernieuwste versie van php.net, dan kan dat met `ppa:ondrej/php`. Voeg die pas toe **na** de laatste release-upgrade.
-
-## 🦉 Stap 6: Opruimen en de wacht houden
+1. Zet een dag van tevoren de **TTL** van het DNS-record van `winkel.eaumontjardin.fr` laag, bijvoorbeeld 300 seconden.
+2. Is de oude winkel intussen weer opengegaan? Doe hem dan dicht (zet nginx uit of zet WooCommerce in onderhoudsmodus) en herhaal **stap 1 en 4** voor de database. Zo neem je de laatste bestellingen mee.
+3. Zet het **A-record** om naar het IP-adres van de nieuwe VPS.
+4. Controleer daarna op de nieuwe server:
 
 ```bash
-sudo apt autoremove --purge                  # oude php8.1- en php8.3-pakketten weg
-sudo systemctl --failed
+sudo certbot renew --dry-run          # werkt het vernieuwen van het certificaat?
 systemctl is-active nginx php*-fpm mysql
-sudo certbot renew --dry-run                 # werkt de vernieuwing van het certificaat nog?
-sudo tail -f /var/log/nginx/error.log /var/log/php*-fpm.log
+sudo tail -f /var/log/nginx/error.log
 ```
 
-**De firewall rechttrekken:** ufw (alleen 443) en de eigen iptables-regels (22, 80 en 443) lopen nu door elkaar. Kies er één. Houd poort 80 open, want certbot heeft die nodig om te vernieuwen. En kijk naar de mislukte inlogpogingen in `btmp`: zet `fail2ban` aan en schakel inloggen met een wachtwoord via SSH uit.
+## 🦉 Stap 8: De wacht houden
+
+- Zet een **vaste back-up** op de nieuwe server op, bijvoorbeeld een nachtelijke `mysqldump` plus restic of borg naar opslag elders. Een webshop zonder back-up is als een eekhoorn zonder voorraad in november.
+- Werk niet structureel met VS Code Remote als root op de server. Daardoor liep de oude schijf vol.
+- Laat de **oude server nog een paar weken staan** als vangnet. Zet daar wel nginx uit, zodat niemand per ongeluk daar bestelt. Zeg hem daarna op.
 
 ---
 
 ## 🍃 Kort samengevat
 
-1. **Ga na** waarom nginx sinds 22 oktober uit staat, en of de winkel weer open moet.
-2. **Leg back-ups aan:** een databasedump, `/var/www`, `/etc` en `/etc/letsencrypt`, allemaal buiten de server.
-3. **Kies:** een nieuwe VPS met 26.04 (aanbevolen), of in-place upgraden.
-4. Bij in-place: **maak ruimte** (vooral `.vscode-server`, goed voor 5,9 GB), installeer de 114 updates, zet MySQL-root om naar `auth_socket` en werk de plugins bij.
-5. Upgrade naar **24.04**, ga over op `php8.3-fpm`, test en maak een back-up.
-6. Upgrade naar **26.04**, ga over op de nieuwe PHP, test en maak een back-up.
-7. Zet **unattended-upgrades** aan, trek de firewall recht en zet een vaste back-up op.
+1. **Back-ups** binnenhalen op je eigen machine: database (gestreamd), `/var/www`, `/etc` en `/etc/letsencrypt`.
+2. **Nieuwe VPS** met Ubuntu 26.04 en minstens 20 GB, met unattended-upgrades, ufw, fail2ban en inloggen met sleutel.
+3. **nginx, MySQL 8.4 en de PHP van 26.04** installeren en de `php.ini`-instellingen overnemen.
+4. **Database** terugzetten en `wordpressuser` aanmaken.
+5. **Bestanden, nginx-config en certificaat** overzetten en de socket aanpassen.
+6. **Testen** via `/etc/hosts`.
+7. **DNS omzetten**, eventueel na een laatste database-sync, en `certbot renew --dry-run` draaien.
+8. **Vaste back-up** opzetten, de oude server een paar weken bewaren en daarna opzeggen.
 
-Doe het op een rustige ochtend, niet op vrijdagmiddag. Het blijft een webshop, dus doe het ook niet midden in een drukke verkoopperiode. Neem een thermosfles koffie mee, en een kopie van de database in je rugzak.
+Doe het op een rustige ochtend, niet op vrijdagmiddag, en niet midden in een drukke verkoopperiode. Neem een thermosfles koffie mee, en een kopie van de database in je rugzak.
