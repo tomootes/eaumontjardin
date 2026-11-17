@@ -6,7 +6,7 @@ $carousel-gap: 0.5rem;
     display: flex;
     flex-direction: column;
     padding: $carousel-gap;
-    background: white;
+    background: $green-light;
 
     @media (min-width: $sm) {
         display: grid;
