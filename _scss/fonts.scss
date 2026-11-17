@@ -1,12 +1,20 @@
-.preahvihear-regular {
-    font-family: "Preahvihear", sans-serif;
-    font-weight: 400;
-    font-style: normal;
+@import url('https://googleapis.com');
+
+body {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 h1,
 h2,
 h3,
 h4 {
-    font-family: "Preahvihear", sans-serif;
+  font-family: "Fraunces", serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-variation-settings:
+    "SOFT" 50,
+    "WONK" 1;
 }
