@@ -28,20 +28,22 @@ $carousel-gap: 0.5rem;
         flex-direction: column;
         overflow: hidden;
         margin-bottom: .5rem;
+
         @media (min-width: $sm) {
             margin-bottom: 0;
         }
+
         img {
             aspect-ratio: 800 / 1000;
             object-fit: cover;
         }
-        p {
-            margin-bottom: 0;
-        }
     }
 
-    p {
-        font-size: 1rem;
+    // De nieuwe eigen class voor de voetnoot / het bijschrift
+    &__caption {
+        font-size: 0.75rem; // Kleiner lettertype (12px)
+        margin-top: 0.25rem; // Kleine ruimte onder de foto
         margin-bottom: 0 !important;
+        opacity: 0.85; // Maakt de tekst net iets subtieler
     }
 }
