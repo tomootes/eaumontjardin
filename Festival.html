@@ -1,0 +1,140 @@
+---
+---
+
+<html lang="NL">
+  <head>
+    <!-- Image for next to website in explorer -->
+    <link rel="icon" type="image/png" href="/favicon.png">
+  
+
+
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Preahvihear&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0;" />
+  
+
+  </head>
+
+  <body>
+    {% include nav-festival.html %}
+    
+    <div class="container mx-auto mt-40 flex max-w-xl flex-col justify-center">
+      <div class="hero">
+        <h1 class="mb-5 mt-2 text-center text-4xl md:text-6xl">
+          <span class="text-8xl">2037</span>
+          <br/> 5 tm 9 augustus
+        </h1>
+      </div>
+    </div>
+   
+     
+
+
+   <!-- kaartverkoop van start -->
+    
+    <div class="container mx-auto mt-20 flex max-w-3xl flex-col justify-center">
+      <div
+        class="border-l-4 border-green-500 bg-white p-4 text-center text-green-700"
+        role="alert"
+      >
+        <p class="font-bold">Zet de datum alvast in je agenda!</p>
+        <p class="text-center">
+          De kaartverkoop voor het festival is helaas nog gesloten, meer info volgt. Wij hebben er in ieder geval zin in!  
+          <br> 
+        </p>
+      </div>
+    </div>
+
+
+    
+    <div class="container mx-auto mt-2 flex max-w-4xl flex-col justify-center">
+      {% include intro.html %}
+    </div>
+    
+    <div class="mx-auto mt-5 max-w-4xl">
+      {% include carousel-1.html %}
+    </div>
+
+    <div class="container mx-auto mt-2 flex max-w-4xl flex-col justify-center">
+      {% include cocreatief.html %}
+    </div>
+    
+    <div class="container mx-auto mt-5 max-w-4xl">
+      {% include carousel-7.html %}
+    </div>
+
+    <div class="container mx-auto mt-2 flex max-w-4xl flex-col justify-center">
+    {% include programma.html %}
+    </div>
+
+    <div class="container mx-auto mt-5 max-w-4xl">
+    {% include carousel-4.html %}
+    </div>
+
+    <div class="container mx-auto mt-2 flex max-w-4xl flex-col justify-center">
+    {% include wanneer.html %}
+    </div>
+       
+    <div class="container mx-auto mt-5 max-w-4xl">
+    {% include carousel-3.html %}
+    </div>
+
+    <div class="container mx-auto mt-2 flex max-w-4xl flex-col justify-center">
+    {% include waar.html %}
+    </div>  
+
+    <div class="container mx-auto mt-5 max-w-4xl">
+    {% include carousel-5.html %}
+    </div>
+
+    <div class="container mx-auto mt-2 flex max-w-4xl flex-col justify-center">
+    {% include Voedselprogramma.html %}
+    </div>
+
+    <div class="container mx-auto mt-1 max-w-4xl">
+    {% include carousel-6.html %}
+    </div>
+
+    <div class="container mx-auto mt-2 flex max-w-4xl flex-col justify-center">
+    {% include Tickets.html %}
+    </div>
+
+    <div class="mx-auto max-w-4xl">
+    {% include carousel-2.html %}
+    </div>
+
+    <div class="container mx-auto mt-2 flex max-w-4xl flex-col justify-center">
+    {% include Kamperen.html %}
+    </div>
+    
+    <div class="container mx-auto mt-5 max-w-4xl">
+    {% include carousel-8.html %}
+    </div>
+
+    <div class="container mx-auto mt-2 flex max-w-4xl flex-col justify-center">
+    {% include belangrijk.html %}
+    </div>
+
+    <div class="container mx-auto mt-4 max-w-4xl">
+    {% include carousel-9.html %}
+    </div>
+
+   
+     <div class="container mx-auto mt-4 max-w-4xl">
+    {% include contact.html %}
+    </div>
+
+  </body>
+  
+
+  
+  {% include footer.html %} 
+  
+  
+</html>
