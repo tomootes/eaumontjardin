@@ -17,16 +17,26 @@
         left: 0;
         height: 8rem;
         background-image: url("/assets/images/4.svg");
+        background-repeat: repeat-x; // Zorgt dat het patroon doorloopt
+        animation: moveLeft 20s linear infinite; // Hoe lager de '20s', hoe sneller hij beweegt
     }
 
     &__links {
         display: flex;
         flex-direction: column;
-        // background-color: plum;
 
         @media only screen and (min-width: 768px) {
             flex-direction: row;
             justify-content: space-between;
         }
+    }
+}
+
+@keyframes moveLeft {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: -1000px 0; // Pas dit getal aan op de breedte van je SVG voor een naadloze lus
     }
 }
